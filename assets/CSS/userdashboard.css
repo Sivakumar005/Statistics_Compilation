@@ -1,0 +1,20 @@
+.fixed-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full height */
+    overflow-y: auto; /* Allow sidebar to scroll if content overflows */
+}
+.fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure navbar is above other content */
+}
+.scrollable-content {
+    margin-left: 16rem; /* Match sidebar width */
+    margin-top: 4rem; /* Match navbar height */
+    overflow-y: auto; /* Allow main content to scroll */
+    height: calc(100vh - 4rem); /* Full height minus navbar */
+}

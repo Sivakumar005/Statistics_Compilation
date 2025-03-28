@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up - Statistics Compilation</title>
+    <!-- Include Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for input container */
+        .input-container {
+            position: relative;
+        }
+
+        .input-container i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .input-container input {
+            padding-left: 40px;
+            /* Space for the icon */
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-white to-purple-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white rounded-2xl shadow-lg flex max-w-2xl w-full">
+        <!-- Left Section- Sign In Button -->
+        <div id="welcome-section"
+            class="w-1/2 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-l-2xl p-8 flex flex-col justify-center items-center text-white">
+            <h2 id="welcome-title" class="text-2xl font-bold mb-4">Welcome, Friend!</h2>
+            <p id="welcome-text" class="text-center mb-6">Register with your personal details to use all of site
+                features</p>
+            <button id="toggle-to-signup"
+                class="bg-white text-yellow-500 px-6 py-2 rounded-lg hover:bg-gray-100 transition">SIGN UP</button>
+        </div>
+        <!-- Right Section: Form (Sign In / Sign Up) -->
+        <div id="form-section" class="w-1/2 p-8">
+            <!-- Logo or Brand -->
+            <div class="text-center mb-2">
+                <h1 class="text-2xl font-bold text-gray-800">Statistics Compilation</h1>
+                <p class="text-gray-600">Automate your data analysis</p>
+            </div>
+            <h2 id="form-title" class="text-xl font-bold mb-6 text-center">Sign In</h2>
+            <!-- Social Login Icons -->
+            <div class="flex space-x-4 mb-6 justify-center">
+                <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl">G</span>
+                </button>
+                <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl">f</span>
+                </button>
+                <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl">in</span>
+                </button>
+            </div>
+            <!-- Form -->
+            <form id="auth-form" action="../../pages/auth/login.php" method="POST" class="space-y-6">
+                <!-- Email Field (for Sign Up) -->
+                <div id="email-field" class="input-container hidden">
+                    <label for="email" class="block text-sm font-medium text-gray-700">EMAIL</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter your email"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <!-- Username Field -->
+                <div class="input-container">
+                    <label for="username" class="block text-sm font-medium text-gray-700">USERNAME</label>
+                    <div class="relative">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <!-- Password Field -->
+                <div class="input-container">
+                    <label for="password" class="block text-sm font-medium text-gray-700">PASSWORD</label>
+                    <div class="relative">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <!-- Forgot Password Link (for Sign In) -->
+                <div id="forgot-password" class="text-right">
+                    <a href="#" class="text-sm text-gray-600 hover:underline">Forgot Your Password?</a>
+                </div>
+                <!-- Submit Button -->
+                <div>
+                    <button id="submit-button" type="submit"
+                        class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+                        SIGN IN
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Toggling -->
+    <script>
+        const welcomeSection = document.getElementById('welcome-section');
+        const welcomeTitle = document.getElementById('welcome-title');
+        const welcomeText = document.getElementById('welcome-text');
+        const toggleButton = document.getElementById('toggle-to-signup');
+        const formTitle = document.getElementById('form-title');
+        const authForm = document.getElementById('auth-form');
+        const emailField = document.getElementById('email-field');
+        const forgotPassword = document.getElementById('forgot-password');
+        const submitButton = document.getElementById('submit-button');
+
+        let isSignIn = true;
+
+        toggleButton.addEventListener('click', () => {
+            isSignIn = !isSignIn;
+
+            if (isSignIn) {
+                // Switch to Sign In
+                welcomeTitle.textContent = 'Welcome, Friend!';
+                welcomeText.textContent = 'Register with your personal details to use all of site features';
+                toggleButton.textContent = 'SIGN UP';
+                formTitle.textContent = 'Sign In';
+                authForm.action = '../../pages/auth/login.php';
+                emailField.classList.add('hidden');
+                forgotPassword.classList.remove('hidden');
+                submitButton.textContent = 'SIGN IN';
+            } else {
+                // Switch to Sign Up
+                welcomeTitle.textContent = 'Welcome Back!';
+                welcomeText.textContent = 'Enter your personal details to use all of site features';
+                toggleButton.textContent = 'SIGN IN';
+                formTitle.textContent = 'Create Account';
+                authForm.action = '../../pages/auth/register.php';
+                emailField.classList.remove('hidden');
+                forgotPassword.classList.add('hidden');
+                submitButton.textContent = 'SIGN UP';
+            }
+        });
+    </script>
+</body>
+
+</html>
