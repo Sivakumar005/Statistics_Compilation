@@ -9,6 +9,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include '../includes/db.php';
+require_once '../includes/config.php';
+
+$user_id = $_SESSION['user_id'];
+$message = '';
+$error = '';
 
 // Clear chart data on initial page load or refresh (GET request)
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -20,63 +25,139 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['dataset_file'])) {
     $user_id = $_SESSION['user_id'];
     $dataset_name = $_POST['dataset_name'];
     $chart_type = isset($_POST['chart_type']) ? $_POST['chart_type'] : 'bar';
-    $upload_dir = "uploads/";
-    $file_name = basename($_FILES['dataset_file']['name']);
-    $file_path = $upload_dir . time() . "_" . $file_name;
     
-    $allowed_types = array('csv', 'xlsx', 'xls', 'json', 'txt');
-    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+    // Check if dataset name already exists for this user
+    $check_query = "SELECT COUNT(*) as count FROM datasets WHERE user_id = ? AND dataset_name = ?";
+    $check_stmt = $mysqli->prepare($check_query);
+    $check_stmt->bind_param("is", $user_id, $dataset_name);
+    $check_stmt->execute();
+    $result = $check_stmt->get_result();
+    $row = $result->fetch_assoc();
     
-    if (!in_array($file_ext, $allowed_types)) {
-        $error = "Only CSV, XLSX, XLS, JSON, and TXT files are allowed";
-    } elseif (move_uploaded_file($_FILES['dataset_file']['tmp_name'], $file_path)) {
-        $success = "File uploaded successfully";
-
-        $labels = [];
-        $values = [];
-
-        if ($file_ext === 'csv') {
-            $data = array_map('str_getcsv', file($file_path));
-            array_shift($data);
-            foreach ($data as $row) {
-                if (isset($row[0], $row[1])) {
-                    $labels[] = $row[0];
-                    $values[] = $row[1];
-                }
-            }
-        } elseif ($file_ext === 'json') {
-            $json_data = json_decode(file_get_contents($file_path), true);
-            if (is_array($json_data)) {
-                $labels = array_column($json_data, 'label');
-                $values = array_column($json_data, 'value');
-            }
-        } elseif ($file_ext === 'txt') {
-            $lines = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            $data = array_map('str_getcsv', $lines);
-            array_shift($data);
-            foreach ($data as $row) {
-                if (isset($row[0], $row[1])) {
-                    $labels[] = $row[0];
-                    $values[] = $row[1];
-                }
-            }
-        } elseif (in_array($file_ext, ['xlsx', 'xls'])) {
-            $error = "Excel file parsing not implemented yet. Please use CSV, JSON, or TXT.";
-        }
-
-        if (!empty($labels) && !empty($values) && is_array($labels) && is_array($values) && count($labels) === count($values)) {
-            $_SESSION['chart_data'] = [
-                'labels' => $labels,
-                'values' => $values,
-                'dataset_name' => $dataset_name,
-                'chart_type' => $chart_type
-            ];
-        } else {
-            $error = "Invalid or empty data in the uploaded file.";
-            unset($_SESSION['chart_data']);
-        }
+    if ($row['count'] > 0) {
+        $error = "A dataset with this name already exists. Please choose a different name.";
     } else {
-        $error = "Error uploading file";
+        $file_name = basename($_FILES['dataset_file']['name']);
+        $unique_filename = time() . "_" . sanitizeFileName($file_name);
+        $file_path = UPLOAD_DIR . $unique_filename;
+        
+        // Debug information
+        error_log("Upload directory: " . UPLOAD_DIR);
+        error_log("File path: " . $file_path);
+        error_log("Upload directory exists: " . (file_exists(UPLOAD_DIR) ? 'Yes' : 'No'));
+        error_log("Upload directory is writable: " . (is_writable(UPLOAD_DIR) ? 'Yes' : 'No'));
+        
+        $allowed_types = array('csv', 'xlsx', 'xls', 'json', 'txt');
+        $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+        
+        if (!in_array($file_ext, $allowed_types)) {
+            $error = "Only CSV, XLSX, XLS, JSON, and TXT files are allowed";
+        } elseif (move_uploaded_file($_FILES['dataset_file']['tmp_name'], $file_path)) {
+            // Insert into datasets table
+            $query = "INSERT INTO datasets (user_id, dataset_name, file_path, upload_date) VALUES (?, ?, ?, NOW())";
+            $stmt = $mysqli->prepare($query);
+            $stmt->bind_param("iss", $user_id, $dataset_name, $unique_filename);
+            
+            if ($stmt->execute()) {
+                $dataset_id = $mysqli->insert_id;
+                $success = "Dataset uploaded successfully! Your visualization is ready below.";
+
+                $labels = [];
+                $values = [];
+
+                if ($file_ext === 'csv') {
+                    // Read the CSV file
+                    $file_handle = fopen($file_path, 'r');
+                    
+                    // Skip the header row but store the column names
+                    $headers = fgetcsv($file_handle);
+                    
+                    // Read the data rows
+                    while (($row = fgetcsv($file_handle)) !== false) {
+                        if (isset($row[0], $row[1])) {
+                            // First column is Label, second column is Value
+                            $labels[] = trim($row[0]); // Trim to remove any whitespace
+                            $values[] = is_numeric($row[1]) ? floatval($row[1]) : 0; // Convert to float or 0 if not numeric
+                        }
+                    }
+                    fclose($file_handle);
+                    
+                    // Debug the parsed data
+                    error_log("Parsed Labels: " . print_r($labels, true));
+                    error_log("Parsed Values: " . print_r($values, true));
+                } elseif ($file_ext === 'json') {
+                    $json_data = json_decode(file_get_contents($file_path), true);
+                    if (is_array($json_data)) {
+                        $labels = array_column($json_data, 'label');
+                        $values = array_column($json_data, 'value');
+                    }
+                } elseif ($file_ext === 'txt') {
+                    $lines = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                    $data = array_map('str_getcsv', $lines);
+                    array_shift($data);
+                    foreach ($data as $row) {
+                        if (isset($row[0], $row[1])) {
+                            $labels[] = trim($row[0]);
+                            $values[] = is_numeric($row[1]) ? floatval($row[1]) : 0;
+                        }
+                    }
+                }
+
+                if (!empty($labels) && !empty($values) && is_array($labels) && is_array($values) && count($labels) === count($values)) {
+                    $_SESSION['chart_data'] = [
+                        'labels' => $labels,
+                        'values' => $values,
+                        'dataset_name' => $dataset_name,
+                        'chart_type' => $chart_type
+                    ];
+
+                    // Save initial chart to database
+                    $chart_config = json_encode([
+                        'type' => $chart_type,
+                        'data' => [
+                            'labels' => $labels,
+                            'datasets' => [[
+                                'label' => $dataset_name,
+                                'data' => $values
+                            ]]
+                        ]
+                    ]);
+
+                    $chart_query = "INSERT INTO charts (dataset_id, chart_type, title, config, chart_data, created_at) 
+                                   VALUES (?, ?, ?, ?, ?, NOW())";
+                    $chart_data = json_encode([
+                        'labels' => $labels,
+                        'data' => $values
+                    ]);
+                    $chart_stmt = $mysqli->prepare($chart_query);
+                    $chart_title = $dataset_name . ' - Initial Chart';
+                    $chart_stmt->bind_param("issss", 
+                        $dataset_id,
+                        $chart_type,
+                        $chart_title,
+                        $chart_config,
+                        $chart_data
+                    );
+                    $chart_stmt->execute();
+
+                    $success = "Dataset uploaded successfully! Your visualization is ready below.";
+                } else {
+                    $error = "Invalid or empty data in the uploaded file.";
+                    // Delete the dataset record if data parsing failed
+                    $delete_query = "DELETE FROM datasets WHERE id = ?";
+                    $delete_stmt = $mysqli->prepare($delete_query);
+                    $delete_stmt->bind_param("i", $dataset_id);
+                    $delete_stmt->execute();
+                    unset($_SESSION['chart_data']);
+                }
+            } else {
+                $error = "Error saving to database: " . $mysqli->error;
+                // Remove uploaded file if database insert failed
+                unlink($file_path);
+            }
+        } else {
+            $error = "Error uploading file. Please try again.";
+        }
     }
 }
 
@@ -269,9 +350,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
                     </button>
                 </form>
 
-                <?php if (isset($success)): ?>
+                <?php if (!empty($success)): ?>
                     <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-md"><?php echo $success; ?></div>
-                <?php elseif (isset($error)): ?>
+                <?php elseif (!empty($error)): ?>
                     <div class="mt-4 p-4 bg-red-100 text-red-700 rounded-md"><?php echo $error; ?></div>
                 <?php endif; ?>
             </div>

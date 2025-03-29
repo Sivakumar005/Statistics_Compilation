@@ -1,5 +1,9 @@
 <!-- navbar.php -->
-<?php session_start(); ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <nav class="bg-white shadow-md p-4 fixed-navbar" id="navbar">
     <div class="flex items-center justify-between">
         <div class="flex items-center">
