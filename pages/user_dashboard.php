@@ -2,11 +2,7 @@
 session_start();
 include '../includes/db.php'; // Updated path for db.php
 
-// Check if the user is logged in
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: ../pages/auth/login.php"); // Redirect to login page if not logged in
-//     exit;
-// }
+
 
 // Fetch user-specific data from the database
 $user_id = $_SESSION['user_id'];
