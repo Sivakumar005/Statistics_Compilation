@@ -75,6 +75,38 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
             font-size: 0.875rem;
             color: #6b7280;
         }
+        /* Header buttons */
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .header-buttons a,
+        .header-buttons button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .header-buttons a {
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+        }
+        .header-buttons a:hover {
+            background-color: #1d4ed8;
+        }
+        .header-buttons button {
+            background-color: #059669;
+            color: white;
+            border: none;
+        }
+        .header-buttons button:hover {
+            background-color: #047857;
+        }
         /* Sidebar styles */
         .fixed-sidebar {
             position: fixed;
@@ -104,7 +136,7 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
         /* Main content adjustment to avoid overlap with sidebar and navbar */
         .main-content {
             margin-left: 16rem;
-            padding-top: 5rem;
+            padding-top: 8rem;
             transition: margin-left 0.3s ease-in-out;
         }
         .main-content.content-expanded {
@@ -155,6 +187,15 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
             .main-content.content-expanded {
                 margin-left: 0;
             }
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .header-buttons a,
+            .header-buttons button {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -169,16 +210,14 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
 
         <!-- Main Content -->
         <main class="flex-1 main-content p-8" id="mainContent">
-            <div class="flex justify-between items-center mb-8">
-                <h1 class="text-2xl font-semibold text-gray-800">Advanced Reports</h1>
-                <div class="flex gap-2">
-                    <a href="data_upload.php" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        <i class='bx bx-upload mr-2'></i> New Upload
-                    </a>
-                    <button onclick="exportReport()" class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                        <i class='bx bx-download mr-2'></i> Export Report
-                    </button>
-                </div>
+            <h1 class="text-2xl font-semibold text-gray-800 mb-8">Advanced Reports</h1>
+            <div class="header-buttons mb-8">
+                <a href="data_upload.php">
+                    <i class='bx bx-upload mr-2'></i> New Upload
+                </a>
+                <button onclick="exportReport()">
+                    <i class='bx bx-download mr-2'></i> Export Report
+                </button>
             </div>
 
             <?php if (empty($datasets)): ?>
@@ -214,26 +253,20 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                             </div>
                         </div>
 
-                        <!-- Summary Statistics -->
-                        <div class="bg-white rounded-xl shadow-sm p-6">
-                            <h2 class="text-lg font-semibold mb-4">Summary Statistics</h2>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="summaryStats">
-                                <!-- Stats will be loaded dynamically -->
-                            </div>
-                        </div>
-
                         <!-- Charts Section -->
                         <div class="bg-white rounded-xl shadow-sm p-6">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-lg font-semibold">Visualizations</h2>
                                 <div class="flex gap-2">
-                                    <select id="chartType" class="rounded-lg border-gray-300" onchange="updateChart()">
+                                    <select id="chartType" class="rounded-lg border-gray-300">
                                         <option value="bar">Bar Chart</option>
                                         <option value="line">Line Chart</option>
                                         <option value="pie">Pie Chart</option>
                                         <option value="scatter">Scatter Plot</option>
-                                        <option value="histogram">Histogram</option>
                                     </select>
+                                    <button onclick="updateChart()" class="px-4 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                        <i class='bx bx-refresh mr-1'></i> Update
+                                    </button>
                                     <button onclick="downloadChart()" class="px-3 py-1 bg-gray-100 rounded-lg hover:bg-gray-200">
                                         <i class='bx bx-download'></i>
                                     </button>
@@ -252,45 +285,22 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                             <h2 class="text-lg font-semibold mb-4">Filters</h2>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Columns</label>
-                                    <select id="columnSelect" class="w-full rounded-lg border-gray-300" multiple>
-                                        <!-- Columns will be loaded dynamically -->
-                                    </select>
-                                </div>
-                                <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
                                     <div class="flex gap-2">
                                         <input type="date" id="dateStart" class="rounded-lg border-gray-300">
                                         <input type="date" id="dateEnd" class="rounded-lg border-gray-300">
                                     </div>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Custom Filter</label>
-                                    <input type="text" id="customFilter" placeholder="e.g., value > 100" 
-                                           class="w-full rounded-lg border-gray-300">
+                                <div class="flex gap-2">
+                                    <button onclick="applyFilters()" 
+                                            class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                        Apply Filters
+                                    </button>
+                                    <button onclick="clearFilters()" 
+                                            class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                                        Clear Filters
+                                    </button>
                                 </div>
-                                <button onclick="applyFilters()" 
-                                        class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                                    Apply Filters
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Correlation Analysis -->
-                        <div class="bg-white rounded-xl shadow-sm p-6">
-                            <h2 class="text-lg font-semibold mb-4">Correlation Analysis</h2>
-                            <div class="space-y-4">
-                                <select id="correlationVar1" class="w-full rounded-lg border-gray-300">
-                                    <option value="">Select Variable 1</option>
-                                </select>
-                                <select id="correlationVar2" class="w-full rounded-lg border-gray-300">
-                                    <option value="">Select Variable 2</option>
-                                </select>
-                                <button onclick="calculateCorrelation()" 
-                                        class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                                    Calculate Correlation
-                                </button>
-                                <div id="correlationResult" class="text-center font-medium"></div>
                             </div>
                         </div>
 
@@ -340,11 +350,16 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    zoom: {
-                        zoom: {
-                            wheel: { enabled: true },
-                            pinch: { enabled: true }
-                        }
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false
                     }
                 }
             }
@@ -353,70 +368,236 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
 
     // Load dataset and its statistics
     function loadDataset(datasetId) {
+        currentDataset = { id: datasetId }; // Initialize currentDataset with the ID
+
+        // Show chart scales when loading dataset
+        mainChart.options.scales.x.display = true;
+        mainChart.options.scales.y.display = true;
+        mainChart.options.plugins.legend.display = true;
+
+        // Fetch dataset statistics
         fetch(`get_dataset_stats.php?id=${datasetId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Received dataset data:', data); // Debug log
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                if (!data.success) {
+                    throw new Error('Failed to load dataset statistics');
+                }
+                
+                // Update currentDataset with the full data
+                currentDataset = {
+                    id: datasetId,
+                    dataset_name: data.dataset_name,
+                    stats: data.stats,
+                    columns: data.columns
+                };
+            })
+            .catch(error => {
+                console.error('Error fetching dataset stats:', error);
+                // Hide chart scales on error
+                mainChart.options.scales.x.display = false;
+                mainChart.options.scales.y.display = false;
+                mainChart.options.plugins.legend.display = false;
+            });
+
+        // Fetch chart data
+        fetch(`get_chart_data.php?id=${datasetId}`)
             .then(response => response.json())
             .then(data => {
-                currentDataset = data;
-                updateSummaryStats(data.stats);
-                updateColumnSelect(data.columns);
-                updateChart(data.chartData);
+                if (data.success) {
+                    const chart = data.chart;
+                    // Update chart type selector
+                    document.getElementById('chartType').value = chart.type;
+                    
+                    // Update chart display
+                    mainChart.config.type = chart.type;
+                    mainChart.config.data = {
+                        labels: chart.data.labels,
+                        datasets: [{
+                            label: chart.title,
+                            data: chart.data.data,
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    };
+                    mainChart.update();
+                }
             })
-            .catch(error => console.error('Error:', error));
-    }
-
-    // Update summary statistics
-    function updateSummaryStats(stats) {
-        const container = document.getElementById('summaryStats');
-        container.innerHTML = `
-            <div class="stat-card">
-                <div class="stat-value">${stats.mean.toFixed(2)}</div>
-                <div class="stat-label">Mean</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">${stats.median.toFixed(2)}</div>
-                <div class="stat-label">Median</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">${stats.stdDev.toFixed(2)}</div>
-                <div class="stat-label">Std Dev</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">${stats.count}</div>
-                <div class="stat-label">Count</div>
-            </div>
-        `;
+            .catch(error => {
+                console.error('Error fetching chart data:', error);
+                // Hide chart scales on error
+                mainChart.options.scales.x.display = false;
+                mainChart.options.scales.y.display = false;
+                mainChart.options.plugins.legend.display = false;
+            });
     }
 
     // Update chart type
     function updateChart() {
-        if (!currentDataset) return;
+        if (!currentDataset) {
+            return;
+        }
         const chartType = document.getElementById('chartType').value;
-        mainChart.config.type = chartType;
+        
+        // Get the current data
+        const currentData = mainChart.config.data.datasets[0].data;
+        const currentLabels = mainChart.config.data.labels;
+
+        // Special handling for histogram
+        if (chartType === 'histogram') {
+            // Convert data to histogram bins
+            const values = currentData;
+            const binCount = Math.ceil(Math.sqrt(values.length)); // Square root rule for bin count
+            const min = Math.min(...values);
+            const max = Math.max(...values);
+            const binWidth = (max - min) / binCount;
+            
+            // Create bins
+            const bins = Array(binCount).fill(0);
+            const binLabels = [];
+            
+            // Fill bins
+            values.forEach(value => {
+                const binIndex = Math.min(Math.floor((value - min) / binWidth), binCount - 1);
+                bins[binIndex]++;
+            });
+            
+            // Create labels for bins
+            for (let i = 0; i < binCount; i++) {
+                const start = (min + (i * binWidth)).toFixed(1);
+                const end = (min + ((i + 1) * binWidth)).toFixed(1);
+                binLabels.push(`${start}-${end}`);
+            }
+            
+            // Update chart with histogram data
+            mainChart.config.type = 'bar';
+            mainChart.config.data = {
+                labels: binLabels,
+                datasets: [{
+                    label: 'Frequency',
+                    data: bins,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            };
+            mainChart.config.options = {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Frequency'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Value Ranges'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            };
+        } else {
+            // Regular chart types
+            mainChart.config.type = chartType;
+            mainChart.config.data = {
+                labels: currentLabels,
+                datasets: [{
+                    label: currentDataset.dataset_name,
+                    data: currentData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            };
+        }
+        
         mainChart.update();
 
-        // Save chart to database
-        const chartData = {
-            dataset_id: currentDataset.id,
-            chart_type: chartType,
-            title: currentDataset.dataset_name + ' - ' + chartType.charAt(0).toUpperCase() + chartType.slice(1) + ' Chart',
-            config: JSON.stringify(mainChart.config)
-        };
+        // First check if a chart already exists for this dataset
+        fetch(`get_chart_data.php?id=${currentDataset.id}`)
+            .then(response => response.json())
+            .then(data => {
+                // Prepare chart data
+                const chartData = {
+                    dataset_id: currentDataset.id,
+                    chart_type: chartType,
+                    title: currentDataset.dataset_name + ' - ' + chartType.charAt(0).toUpperCase() + chartType.slice(1) + ' Chart',
+                    config: JSON.stringify(mainChart.config),
+                    chart_data: JSON.stringify({
+                        labels: mainChart.config.data.labels,
+                        data: mainChart.config.data.datasets[0].data
+                    })
+                };
 
-        fetch('save_chart.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(chartData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Refresh the chart count
-                loadDataset(currentDataset.id);
-            }
-        })
-        .catch(error => console.error('Error:', error));
+                // If chart exists, update it; otherwise create new
+                const url = data.success ? 'update_chart.php' : 'save_chart.php';
+                const method = data.success ? 'PUT' : 'POST';
+
+                // Log the data being sent
+                console.log('Sending chart data:', chartData);
+
+                // Save/Update chart in database
+                fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(chartData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Server response:', data);
+                    if (data.success) {
+                        // Show success message
+                        const button = document.querySelector('button[onclick="updateChart()"]');
+                        const originalText = button.innerHTML;
+                        button.innerHTML = '<i class="bx bx-check mr-1"></i> Updated!';
+                        button.classList.add('bg-green-600', 'hover:bg-green-700');
+                        
+                        // Reset button after 2 seconds
+                        setTimeout(() => {
+                            button.innerHTML = originalText;
+                            button.classList.remove('bg-green-600', 'hover:bg-green-700');
+                        }, 2000);
+
+                        // Refresh the chart count
+                        loadDataset(currentDataset.id);
+                    } else {
+                        console.error('Error saving chart:', data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            })
+            .catch(error => {
+                console.error('Error checking existing chart:', error);
+            });
     }
 
     // Download chart as image
@@ -436,12 +617,6 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
         doc.setFontSize(20);
         doc.text('Statistical Report', 20, 20);
         
-        // Add summary statistics
-        doc.setFontSize(12);
-        doc.text('Summary Statistics:', 20, 40);
-        const stats = document.getElementById('summaryStats').innerText;
-        doc.text(stats, 20, 50);
-        
         // Add chart
         const chartImage = mainChart.toBase64Image();
         doc.addImage(chartImage, 'PNG', 20, 70, 170, 100);
@@ -454,6 +629,162 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
     document.addEventListener('DOMContentLoaded', function() {
         initChart();
     });
+
+    // Apply date range filters
+    function applyFilters() {
+        const dateStart = document.getElementById('dateStart').value;
+        const dateEnd = document.getElementById('dateEnd').value;
+
+        // Validate dates
+        if (!dateStart || !dateEnd) {
+            alert('Please select both start and end dates');
+            return;
+        }
+
+        // Show loading state on button
+        const button = document.querySelector('button[onclick="applyFilters()"]');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Applying...';
+        button.disabled = true;
+
+        // Reset current dataset and chart
+        currentDataset = null;
+        mainChart.data.labels = [];
+        mainChart.data.datasets = [];
+        mainChart.options.scales.x.display = false;
+        mainChart.options.scales.y.display = false;
+        mainChart.options.plugins.legend.display = false;
+        mainChart.update();
+
+        // Fetch datasets within date range
+        fetch(`get_filtered_datasets.php?start_date=${dateStart}&end_date=${dateEnd}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Update dataset cards
+                    const datasetContainer = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3.gap-4');
+                    if (data.datasets.length === 0) {
+                        datasetContainer.innerHTML = `
+                            <div class="col-span-full text-center py-8">
+                                <p class="text-gray-500">No datasets found in the selected date range</p>
+                            </div>
+                        `;
+                    } else {
+                        datasetContainer.innerHTML = data.datasets.map(dataset => `
+                            <div class="report-card bg-white rounded-lg p-4 cursor-pointer border border-gray-200 hover:border-blue-500 shadow-sm hover:shadow-md" 
+                                 onclick="loadDataset(${dataset.id})">
+                                <h5 class="font-medium text-gray-900">${dataset.dataset_name}</h5>
+                                <p class="text-sm text-gray-500 mt-1">
+                                    Uploaded: ${new Date(dataset.upload_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                </p>
+                                <div class="mt-2 flex items-center text-xs text-gray-500">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    <span>${dataset.chart_count} charts</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+
+                    // Show success state
+                    button.innerHTML = '<i class="fas fa-check"></i> Applied';
+                    button.classList.add('bg-green-600', 'hover:bg-green-700');
+                } else {
+                    throw new Error(data.error || 'Failed to apply filters');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error state
+                button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+                button.classList.add('bg-red-600', 'hover:bg-red-700');
+            })
+            .finally(() => {
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-600', 'hover:bg-green-700', 'bg-red-600', 'hover:bg-red-700');
+                    button.disabled = false;
+                }, 2000);
+            });
+    }
+
+    // Clear filters and reset to initial state
+    function clearFilters() {
+        // Clear date inputs
+        document.getElementById('dateStart').value = '';
+        document.getElementById('dateEnd').value = '';
+
+        // Reset current dataset and chart
+        currentDataset = null;
+        mainChart.data.labels = [];
+        mainChart.data.datasets = [];
+        mainChart.options.scales.x.display = false;
+        mainChart.options.scales.y.display = false;
+        mainChart.options.plugins.legend.display = false;
+        mainChart.update();
+
+        // Show loading state on button
+        const button = document.querySelector('button[onclick="clearFilters()"]');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Clearing...';
+        button.disabled = true;
+
+        // Fetch all datasets
+        fetch('get_filtered_datasets.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Update dataset cards
+                    const datasetContainer = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3.gap-4');
+                    if (data.datasets.length === 0) {
+                        datasetContainer.innerHTML = `
+                            <div class="col-span-full text-center py-8">
+                                <p class="text-gray-500">No datasets found</p>
+                            </div>
+                        `;
+                    } else {
+                        datasetContainer.innerHTML = data.datasets.map(dataset => `
+                            <div class="report-card bg-white rounded-lg p-4 cursor-pointer border border-gray-200 hover:border-blue-500 shadow-sm hover:shadow-md" 
+                                 onclick="loadDataset(${dataset.id})">
+                                <h5 class="font-medium text-gray-900">${dataset.dataset_name}</h5>
+                                <p class="text-sm text-gray-500 mt-1">
+                                    Uploaded: ${new Date(dataset.upload_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                </p>
+                                <div class="mt-2 flex items-center text-xs text-gray-500">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    <span>${dataset.chart_count} charts</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+
+                    // Show success state
+                    button.innerHTML = '<i class="fas fa-check"></i> Cleared';
+                    button.classList.add('bg-green-600', 'hover:bg-green-700', 'text-white');
+                } else {
+                    throw new Error(data.error || 'Failed to clear filters');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error state
+                button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+                button.classList.add('bg-red-600', 'hover:bg-red-700', 'text-white');
+            })
+            .finally(() => {
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-600', 'hover:bg-green-700', 'bg-red-600', 'hover:bg-red-700', 'text-white');
+                    button.disabled = false;
+                }, 2000);
+            });
+    }
     </script>
 </body>
 </html>

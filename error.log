@@ -1,0 +1,892 @@
+[30-Mar-2025 07:05:02 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[30-Mar-2025 07:06:33 Europe/Berlin] Error in get_dataset_stats.php: Attempting to fetch dataset Context: Array
+(
+    [dataset_id] => 18
+    [user_id] => 1
+)
+
+[30-Mar-2025 07:06:33 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist Context: Array
+(
+    [file] => C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php
+    [line] => 77
+    [trace] => #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(77): mysqli->prepare('SELECT * FROM d...')
+#1 {main}
+)
+
+[30-Mar-2025 07:09:11 Europe/Berlin] Error in get_dataset_stats.php: Attempting to fetch dataset Context: Array
+(
+    [dataset_id] => 18
+    [user_id] => 1
+)
+
+[30-Mar-2025 07:09:11 Europe/Berlin] Error in get_dataset_stats.php: No data found for dataset Context: Array
+(
+    [dataset_id] => 18
+)
+
+[30-Mar-2025 07:10:18 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:10:18 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:10:18 Europe/Berlin] charts
+[30-Mar-2025 07:10:18 Europe/Berlin] dataset_data
+[30-Mar-2025 07:10:18 Europe/Berlin] datasets
+[30-Mar-2025 07:10:18 Europe/Berlin] report_notes
+[30-Mar-2025 07:10:18 Europe/Berlin] saved_reports
+[30-Mar-2025 07:10:18 Europe/Berlin] users
+[30-Mar-2025 07:10:18 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:10:18 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:10:20 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:10:20 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:10:20 Europe/Berlin] charts
+[30-Mar-2025 07:10:20 Europe/Berlin] dataset_data
+[30-Mar-2025 07:10:20 Europe/Berlin] datasets
+[30-Mar-2025 07:10:20 Europe/Berlin] report_notes
+[30-Mar-2025 07:10:20 Europe/Berlin] saved_reports
+[30-Mar-2025 07:10:20 Europe/Berlin] users
+[30-Mar-2025 07:10:20 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:10:20 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:10:40 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:10:40 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:10:40 Europe/Berlin] charts
+[30-Mar-2025 07:10:40 Europe/Berlin] dataset_data
+[30-Mar-2025 07:10:40 Europe/Berlin] datasets
+[30-Mar-2025 07:10:40 Europe/Berlin] report_notes
+[30-Mar-2025 07:10:40 Europe/Berlin] saved_reports
+[30-Mar-2025 07:10:40 Europe/Berlin] users
+[30-Mar-2025 07:10:40 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:10:40 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:12:28 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:12:28 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:12:28 Europe/Berlin] charts
+[30-Mar-2025 07:12:28 Europe/Berlin] dataset_data
+[30-Mar-2025 07:12:28 Europe/Berlin] datasets
+[30-Mar-2025 07:12:28 Europe/Berlin] report_notes
+[30-Mar-2025 07:12:28 Europe/Berlin] saved_reports
+[30-Mar-2025 07:12:28 Europe/Berlin] users
+[30-Mar-2025 07:12:28 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:12:28 Europe/Berlin] Error in get_dataset_stats.php: Unknown column 'data_value' in 'field list'
+[30-Mar-2025 07:12:28 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[30-Mar-2025 07:13:55 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:13:55 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:13:55 Europe/Berlin] charts
+[30-Mar-2025 07:13:55 Europe/Berlin] dataset_data
+[30-Mar-2025 07:13:55 Europe/Berlin] datasets
+[30-Mar-2025 07:13:55 Europe/Berlin] report_notes
+[30-Mar-2025 07:13:55 Europe/Berlin] saved_reports
+[30-Mar-2025 07:13:55 Europe/Berlin] users
+[30-Mar-2025 07:13:55 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:13:55 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:14:56 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:14:56 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:14:56 Europe/Berlin] charts
+[30-Mar-2025 07:14:56 Europe/Berlin] dataset_data
+[30-Mar-2025 07:14:56 Europe/Berlin] datasets
+[30-Mar-2025 07:14:56 Europe/Berlin] report_notes
+[30-Mar-2025 07:14:56 Europe/Berlin] saved_reports
+[30-Mar-2025 07:14:56 Europe/Berlin] users
+[30-Mar-2025 07:14:56 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:14:56 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:15:29 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:15:29 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:15:29 Europe/Berlin] charts
+[30-Mar-2025 07:15:29 Europe/Berlin] dataset_data
+[30-Mar-2025 07:15:29 Europe/Berlin] datasets
+[30-Mar-2025 07:15:29 Europe/Berlin] report_notes
+[30-Mar-2025 07:15:29 Europe/Berlin] saved_reports
+[30-Mar-2025 07:15:29 Europe/Berlin] users
+[30-Mar-2025 07:15:29 Europe/Berlin] Dataset found: Array
+(
+    [id] => 19
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311718_sample_data.txt
+    [upload_date] => 2025-03-30 10:45:18
+)
+
+[30-Mar-2025 07:15:29 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:18:10 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:18:10 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:18:10 Europe/Berlin] charts
+[30-Mar-2025 07:18:10 Europe/Berlin] dataset_data
+[30-Mar-2025 07:18:10 Europe/Berlin] datasets
+[30-Mar-2025 07:18:10 Europe/Berlin] report_notes
+[30-Mar-2025 07:18:10 Europe/Berlin] saved_reports
+[30-Mar-2025 07:18:10 Europe/Berlin] users
+[30-Mar-2025 07:18:10 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:18:10 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:22:01 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:22:01 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:22:01 Europe/Berlin] charts
+[30-Mar-2025 07:22:01 Europe/Berlin] dataset_data
+[30-Mar-2025 07:22:01 Europe/Berlin] datasets
+[30-Mar-2025 07:22:01 Europe/Berlin] report_notes
+[30-Mar-2025 07:22:01 Europe/Berlin] saved_reports
+[30-Mar-2025 07:22:01 Europe/Berlin] users
+[30-Mar-2025 07:22:01 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:22:01 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:22:34 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:22:34 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:22:34 Europe/Berlin] charts
+[30-Mar-2025 07:22:34 Europe/Berlin] dataset_data
+[30-Mar-2025 07:22:34 Europe/Berlin] datasets
+[30-Mar-2025 07:22:34 Europe/Berlin] report_notes
+[30-Mar-2025 07:22:34 Europe/Berlin] saved_reports
+[30-Mar-2025 07:22:34 Europe/Berlin] users
+[30-Mar-2025 07:22:34 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:22:34 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:22:34 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:22:34 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:22:34 Europe/Berlin] charts
+[30-Mar-2025 07:22:34 Europe/Berlin] dataset_data
+[30-Mar-2025 07:22:34 Europe/Berlin] datasets
+[30-Mar-2025 07:22:34 Europe/Berlin] report_notes
+[30-Mar-2025 07:22:34 Europe/Berlin] saved_reports
+[30-Mar-2025 07:22:34 Europe/Berlin] users
+[30-Mar-2025 07:22:34 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:22:34 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:23:34 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:23:34 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:23:34 Europe/Berlin] charts
+[30-Mar-2025 07:23:34 Europe/Berlin] dataset_data
+[30-Mar-2025 07:23:34 Europe/Berlin] datasets
+[30-Mar-2025 07:23:34 Europe/Berlin] report_notes
+[30-Mar-2025 07:23:34 Europe/Berlin] saved_reports
+[30-Mar-2025 07:23:34 Europe/Berlin] users
+[30-Mar-2025 07:23:34 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:23:34 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:23:48 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:23:48 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:23:48 Europe/Berlin] charts
+[30-Mar-2025 07:23:48 Europe/Berlin] dataset_data
+[30-Mar-2025 07:23:48 Europe/Berlin] datasets
+[30-Mar-2025 07:23:48 Europe/Berlin] report_notes
+[30-Mar-2025 07:23:48 Europe/Berlin] saved_reports
+[30-Mar-2025 07:23:48 Europe/Berlin] users
+[30-Mar-2025 07:23:48 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:23:48 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:24:15 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:24:15 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:24:15 Europe/Berlin] charts
+[30-Mar-2025 07:24:15 Europe/Berlin] dataset_data
+[30-Mar-2025 07:24:15 Europe/Berlin] datasets
+[30-Mar-2025 07:24:15 Europe/Berlin] report_notes
+[30-Mar-2025 07:24:15 Europe/Berlin] saved_reports
+[30-Mar-2025 07:24:15 Europe/Berlin] users
+[30-Mar-2025 07:24:15 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:24:15 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:25:17 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:25:17 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:25:17 Europe/Berlin] charts
+[30-Mar-2025 07:25:17 Europe/Berlin] dataset_data
+[30-Mar-2025 07:25:17 Europe/Berlin] datasets
+[30-Mar-2025 07:25:17 Europe/Berlin] report_notes
+[30-Mar-2025 07:25:17 Europe/Berlin] saved_reports
+[30-Mar-2025 07:25:17 Europe/Berlin] users
+[30-Mar-2025 07:25:17 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:25:17 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:23 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:23 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:23 Europe/Berlin] charts
+[30-Mar-2025 07:34:23 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:23 Europe/Berlin] datasets
+[30-Mar-2025 07:34:23 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:23 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:23 Europe/Berlin] users
+[30-Mar-2025 07:34:23 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:34:23 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:25 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:25 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:25 Europe/Berlin] charts
+[30-Mar-2025 07:34:25 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:25 Europe/Berlin] datasets
+[30-Mar-2025 07:34:25 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:25 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:25 Europe/Berlin] users
+[30-Mar-2025 07:34:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:34:25 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:26 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:26 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:26 Europe/Berlin] charts
+[30-Mar-2025 07:34:26 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:26 Europe/Berlin] datasets
+[30-Mar-2025 07:34:26 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:26 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:26 Europe/Berlin] users
+[30-Mar-2025 07:34:26 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:34:26 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:32 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:32 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:32 Europe/Berlin] charts
+[30-Mar-2025 07:34:32 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:32 Europe/Berlin] datasets
+[30-Mar-2025 07:34:32 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:32 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:32 Europe/Berlin] users
+[30-Mar-2025 07:34:32 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:34:32 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:37 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:37 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:37 Europe/Berlin] charts
+[30-Mar-2025 07:34:37 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:37 Europe/Berlin] datasets
+[30-Mar-2025 07:34:37 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:37 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:37 Europe/Berlin] users
+[30-Mar-2025 07:34:37 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:34:37 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:38 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:38 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:38 Europe/Berlin] charts
+[30-Mar-2025 07:34:38 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:38 Europe/Berlin] datasets
+[30-Mar-2025 07:34:38 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:38 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:38 Europe/Berlin] users
+[30-Mar-2025 07:34:38 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:34:38 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:39 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:39 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:39 Europe/Berlin] charts
+[30-Mar-2025 07:34:39 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:39 Europe/Berlin] datasets
+[30-Mar-2025 07:34:39 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:39 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:39 Europe/Berlin] users
+[30-Mar-2025 07:34:39 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:34:39 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:34:42 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:34:42 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:34:42 Europe/Berlin] charts
+[30-Mar-2025 07:34:42 Europe/Berlin] dataset_data
+[30-Mar-2025 07:34:42 Europe/Berlin] datasets
+[30-Mar-2025 07:34:42 Europe/Berlin] report_notes
+[30-Mar-2025 07:34:42 Europe/Berlin] saved_reports
+[30-Mar-2025 07:34:42 Europe/Berlin] users
+[30-Mar-2025 07:34:42 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:34:42 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:40:25 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:40:25 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:40:25 Europe/Berlin] charts
+[30-Mar-2025 07:40:25 Europe/Berlin] dataset_data
+[30-Mar-2025 07:40:25 Europe/Berlin] datasets
+[30-Mar-2025 07:40:25 Europe/Berlin] report_notes
+[30-Mar-2025 07:40:25 Europe/Berlin] saved_reports
+[30-Mar-2025 07:40:25 Europe/Berlin] users
+[30-Mar-2025 07:40:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:40:25 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:40:26 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:40:26 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:40:26 Europe/Berlin] charts
+[30-Mar-2025 07:40:26 Europe/Berlin] dataset_data
+[30-Mar-2025 07:40:26 Europe/Berlin] datasets
+[30-Mar-2025 07:40:26 Europe/Berlin] report_notes
+[30-Mar-2025 07:40:26 Europe/Berlin] saved_reports
+[30-Mar-2025 07:40:26 Europe/Berlin] users
+[30-Mar-2025 07:40:26 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:40:26 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:40:28 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:40:28 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:40:28 Europe/Berlin] charts
+[30-Mar-2025 07:40:28 Europe/Berlin] dataset_data
+[30-Mar-2025 07:40:28 Europe/Berlin] datasets
+[30-Mar-2025 07:40:28 Europe/Berlin] report_notes
+[30-Mar-2025 07:40:28 Europe/Berlin] saved_reports
+[30-Mar-2025 07:40:28 Europe/Berlin] users
+[30-Mar-2025 07:40:28 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:40:28 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:40:29 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:40:29 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:40:29 Europe/Berlin] charts
+[30-Mar-2025 07:40:29 Europe/Berlin] dataset_data
+[30-Mar-2025 07:40:29 Europe/Berlin] datasets
+[30-Mar-2025 07:40:29 Europe/Berlin] report_notes
+[30-Mar-2025 07:40:29 Europe/Berlin] saved_reports
+[30-Mar-2025 07:40:29 Europe/Berlin] users
+[30-Mar-2025 07:40:29 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:40:29 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:41:18 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:41:18 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:41:18 Europe/Berlin] charts
+[30-Mar-2025 07:41:18 Europe/Berlin] dataset_data
+[30-Mar-2025 07:41:18 Europe/Berlin] datasets
+[30-Mar-2025 07:41:18 Europe/Berlin] report_notes
+[30-Mar-2025 07:41:18 Europe/Berlin] saved_reports
+[30-Mar-2025 07:41:18 Europe/Berlin] users
+[30-Mar-2025 07:41:18 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:41:18 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:41:52 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:41:52 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:41:52 Europe/Berlin] charts
+[30-Mar-2025 07:41:52 Europe/Berlin] dataset_data
+[30-Mar-2025 07:41:52 Europe/Berlin] datasets
+[30-Mar-2025 07:41:52 Europe/Berlin] report_notes
+[30-Mar-2025 07:41:52 Europe/Berlin] saved_reports
+[30-Mar-2025 07:41:52 Europe/Berlin] users
+[30-Mar-2025 07:41:52 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:41:52 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:42:04 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:42:04 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:42:04 Europe/Berlin] charts
+[30-Mar-2025 07:42:04 Europe/Berlin] dataset_data
+[30-Mar-2025 07:42:04 Europe/Berlin] datasets
+[30-Mar-2025 07:42:04 Europe/Berlin] report_notes
+[30-Mar-2025 07:42:04 Europe/Berlin] saved_reports
+[30-Mar-2025 07:42:04 Europe/Berlin] users
+[30-Mar-2025 07:42:04 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:42:04 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:44:11 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:44:11 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:44:11 Europe/Berlin] charts
+[30-Mar-2025 07:44:11 Europe/Berlin] dataset_data
+[30-Mar-2025 07:44:11 Europe/Berlin] datasets
+[30-Mar-2025 07:44:11 Europe/Berlin] report_notes
+[30-Mar-2025 07:44:11 Europe/Berlin] saved_reports
+[30-Mar-2025 07:44:11 Europe/Berlin] users
+[30-Mar-2025 07:44:11 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:44:11 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:44:22 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:44:22 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:44:22 Europe/Berlin] charts
+[30-Mar-2025 07:44:22 Europe/Berlin] dataset_data
+[30-Mar-2025 07:44:22 Europe/Berlin] datasets
+[30-Mar-2025 07:44:22 Europe/Berlin] report_notes
+[30-Mar-2025 07:44:22 Europe/Berlin] saved_reports
+[30-Mar-2025 07:44:22 Europe/Berlin] users
+[30-Mar-2025 07:44:22 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:44:22 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:44:25 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:44:25 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:44:25 Europe/Berlin] charts
+[30-Mar-2025 07:44:25 Europe/Berlin] dataset_data
+[30-Mar-2025 07:44:25 Europe/Berlin] datasets
+[30-Mar-2025 07:44:25 Europe/Berlin] report_notes
+[30-Mar-2025 07:44:25 Europe/Berlin] saved_reports
+[30-Mar-2025 07:44:25 Europe/Berlin] users
+[30-Mar-2025 07:44:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:44:25 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:46:05 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:46:05 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:46:05 Europe/Berlin] charts
+[30-Mar-2025 07:46:05 Europe/Berlin] dataset_data
+[30-Mar-2025 07:46:05 Europe/Berlin] datasets
+[30-Mar-2025 07:46:05 Europe/Berlin] report_notes
+[30-Mar-2025 07:46:05 Europe/Berlin] saved_reports
+[30-Mar-2025 07:46:05 Europe/Berlin] users
+[30-Mar-2025 07:46:05 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:46:05 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:46:06 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:46:06 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:46:06 Europe/Berlin] charts
+[30-Mar-2025 07:46:06 Europe/Berlin] dataset_data
+[30-Mar-2025 07:46:06 Europe/Berlin] datasets
+[30-Mar-2025 07:46:06 Europe/Berlin] report_notes
+[30-Mar-2025 07:46:06 Europe/Berlin] saved_reports
+[30-Mar-2025 07:46:06 Europe/Berlin] users
+[30-Mar-2025 07:46:06 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:46:06 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:49:04 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:49:04 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:49:04 Europe/Berlin] charts
+[30-Mar-2025 07:49:04 Europe/Berlin] dataset_data
+[30-Mar-2025 07:49:04 Europe/Berlin] datasets
+[30-Mar-2025 07:49:04 Europe/Berlin] report_notes
+[30-Mar-2025 07:49:04 Europe/Berlin] saved_reports
+[30-Mar-2025 07:49:04 Europe/Berlin] users
+[30-Mar-2025 07:49:04 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 07:49:04 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 07:49:05 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 07:49:05 Europe/Berlin] Tables in database: 
+[30-Mar-2025 07:49:05 Europe/Berlin] charts
+[30-Mar-2025 07:49:05 Europe/Berlin] dataset_data
+[30-Mar-2025 07:49:05 Europe/Berlin] datasets
+[30-Mar-2025 07:49:05 Europe/Berlin] report_notes
+[30-Mar-2025 07:49:05 Europe/Berlin] saved_reports
+[30-Mar-2025 07:49:05 Europe/Berlin] users
+[30-Mar-2025 07:49:05 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 07:49:05 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 13:41:23 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 13:41:23 Europe/Berlin] Tables in database: 
+[30-Mar-2025 13:41:23 Europe/Berlin] charts
+[30-Mar-2025 13:41:23 Europe/Berlin] dataset_data
+[30-Mar-2025 13:41:23 Europe/Berlin] datasets
+[30-Mar-2025 13:41:23 Europe/Berlin] report_notes
+[30-Mar-2025 13:41:23 Europe/Berlin] saved_reports
+[30-Mar-2025 13:41:23 Europe/Berlin] users
+[30-Mar-2025 13:41:23 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 13:41:23 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:08:42 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:08:42 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:08:42 Europe/Berlin] charts
+[30-Mar-2025 14:08:42 Europe/Berlin] dataset_data
+[30-Mar-2025 14:08:42 Europe/Berlin] datasets
+[30-Mar-2025 14:08:42 Europe/Berlin] report_notes
+[30-Mar-2025 14:08:42 Europe/Berlin] saved_reports
+[30-Mar-2025 14:08:42 Europe/Berlin] users
+[30-Mar-2025 14:08:42 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 14:08:42 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:08:59 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:08:59 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:08:59 Europe/Berlin] charts
+[30-Mar-2025 14:08:59 Europe/Berlin] dataset_data
+[30-Mar-2025 14:08:59 Europe/Berlin] datasets
+[30-Mar-2025 14:08:59 Europe/Berlin] report_notes
+[30-Mar-2025 14:08:59 Europe/Berlin] saved_reports
+[30-Mar-2025 14:08:59 Europe/Berlin] users
+[30-Mar-2025 14:08:59 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 14:08:59 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:13:57 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:13:57 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:13:57 Europe/Berlin] charts
+[30-Mar-2025 14:13:57 Europe/Berlin] dataset_data
+[30-Mar-2025 14:13:57 Europe/Berlin] datasets
+[30-Mar-2025 14:13:57 Europe/Berlin] report_notes
+[30-Mar-2025 14:13:57 Europe/Berlin] saved_reports
+[30-Mar-2025 14:13:57 Europe/Berlin] users
+[30-Mar-2025 14:13:57 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 14:13:57 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:13:58 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:13:58 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:13:58 Europe/Berlin] charts
+[30-Mar-2025 14:13:58 Europe/Berlin] dataset_data
+[30-Mar-2025 14:13:58 Europe/Berlin] datasets
+[30-Mar-2025 14:13:58 Europe/Berlin] report_notes
+[30-Mar-2025 14:13:58 Europe/Berlin] saved_reports
+[30-Mar-2025 14:13:58 Europe/Berlin] users
+[30-Mar-2025 14:13:58 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 14:13:58 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:13:59 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:13:59 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:13:59 Europe/Berlin] charts
+[30-Mar-2025 14:13:59 Europe/Berlin] dataset_data
+[30-Mar-2025 14:13:59 Europe/Berlin] datasets
+[30-Mar-2025 14:13:59 Europe/Berlin] report_notes
+[30-Mar-2025 14:13:59 Europe/Berlin] saved_reports
+[30-Mar-2025 14:13:59 Europe/Berlin] users
+[30-Mar-2025 14:13:59 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 14:13:59 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:16:25 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:16:25 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:16:25 Europe/Berlin] charts
+[30-Mar-2025 14:16:25 Europe/Berlin] dataset_data
+[30-Mar-2025 14:16:25 Europe/Berlin] datasets
+[30-Mar-2025 14:16:25 Europe/Berlin] report_notes
+[30-Mar-2025 14:16:25 Europe/Berlin] saved_reports
+[30-Mar-2025 14:16:25 Europe/Berlin] users
+[30-Mar-2025 14:16:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 14:16:25 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:16:53 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:16:53 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:16:53 Europe/Berlin] charts
+[30-Mar-2025 14:16:53 Europe/Berlin] dataset_data
+[30-Mar-2025 14:16:53 Europe/Berlin] datasets
+[30-Mar-2025 14:16:53 Europe/Berlin] report_notes
+[30-Mar-2025 14:16:53 Europe/Berlin] saved_reports
+[30-Mar-2025 14:16:53 Europe/Berlin] users
+[30-Mar-2025 14:16:53 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[30-Mar-2025 14:16:53 Europe/Berlin] Data rows found: 0
+[30-Mar-2025 14:16:54 Europe/Berlin] Current database: statistics_db
+[30-Mar-2025 14:16:54 Europe/Berlin] Tables in database: 
+[30-Mar-2025 14:16:54 Europe/Berlin] charts
+[30-Mar-2025 14:16:54 Europe/Berlin] dataset_data
+[30-Mar-2025 14:16:54 Europe/Berlin] datasets
+[30-Mar-2025 14:16:54 Europe/Berlin] report_notes
+[30-Mar-2025 14:16:54 Europe/Berlin] saved_reports
+[30-Mar-2025 14:16:54 Europe/Berlin] users
+[30-Mar-2025 14:16:54 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[30-Mar-2025 14:16:54 Europe/Berlin] Data rows found: 0
+[31-Mar-2025 11:35:34 Europe/Berlin] Current database: statistics_db
+[31-Mar-2025 11:35:34 Europe/Berlin] Tables in database: 
+[31-Mar-2025 11:35:34 Europe/Berlin] charts
+[31-Mar-2025 11:35:34 Europe/Berlin] dataset_data
+[31-Mar-2025 11:35:34 Europe/Berlin] datasets
+[31-Mar-2025 11:35:34 Europe/Berlin] report_notes
+[31-Mar-2025 11:35:34 Europe/Berlin] saved_reports
+[31-Mar-2025 11:35:34 Europe/Berlin] users
+[31-Mar-2025 11:35:34 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[31-Mar-2025 11:35:34 Europe/Berlin] Data rows found: 0
+[31-Mar-2025 11:36:51 Europe/Berlin] Current database: statistics_db
+[31-Mar-2025 11:36:51 Europe/Berlin] Tables in database: 
+[31-Mar-2025 11:36:51 Europe/Berlin] charts
+[31-Mar-2025 11:36:51 Europe/Berlin] dataset_data
+[31-Mar-2025 11:36:51 Europe/Berlin] datasets
+[31-Mar-2025 11:36:51 Europe/Berlin] report_notes
+[31-Mar-2025 11:36:51 Europe/Berlin] saved_reports
+[31-Mar-2025 11:36:51 Europe/Berlin] users
+[31-Mar-2025 11:36:51 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[31-Mar-2025 11:36:51 Europe/Berlin] Data rows found: 0

@@ -1,0 +1,5 @@
+City,Temperature
+New York,22
+Los Angeles,28
+Chicago,15
+Houston,30

@@ -7,15 +7,65 @@ if (session_status() === PHP_SESSION_NONE) {
 <nav class="bg-white shadow-md p-4 fixed-navbar" id="navbar">
     <div class="flex items-center justify-between">
         <div class="flex items-center">
-            <!-- Toggle Button -->
+            <!-- Toggle Button - Only show on non-dashboard pages -->
+            <?php if (basename($_SERVER['PHP_SELF']) !== 'user_dashboard.php'): ?>
             <button class="toggle-btn" id="toggleSidebar">
                 <i class="fas fa-bars text-xl"></i>
             </button>
+            <?php endif; ?>
             <h1 class="text-xl font-bold text-gray-800 ml-4">Statistics Compilation</h1>
         </div>
         <div class="flex items-center space-x-4">
             <span class="text-gray-700">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
-            <a href="./auth/logout.php" class="ml-4 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600">Logout</a>
+            <!-- Profile Dropdown -->
+            <div class="relative">
+                <button id="profileButton" class="flex items-center space-x-2 focus:outline-none">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                        <i class="fas fa-user text-lg"></i>
+                    </div>
+                </button>
+                <!-- Dropdown Menu -->
+                <div id="profileDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-50 hidden">
+                    <a href="profile.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <i class="fas fa-user-circle mr-2"></i> Profile
+                    </a>
+                    <a href="settings.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <i class="fas fa-cog mr-2"></i> Settings
+                    </a>
+                    <a href="./auth/logout.php" class="block px-4 py-2 text-red-600 hover:bg-gray-100">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const profileButton = document.getElementById('profileButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+    let isOpen = false;
+
+    // Toggle dropdown
+    profileButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        isOpen = !isOpen;
+        profileDropdown.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
+            isOpen = false;
+            profileDropdown.classList.add('hidden');
+        }
+    });
+});
+</script>
+
+<!-- Add Alpine.js for dropdown functionality -->
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<style>
+    [x-cloak] { display: none !important; }
+</style>

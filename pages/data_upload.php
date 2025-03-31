@@ -85,11 +85,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['dataset_file'])) {
                     // Debug the parsed data
                     error_log("Parsed Labels: " . print_r($labels, true));
                     error_log("Parsed Values: " . print_r($values, true));
+
+                    // Insert data into dataset_data table
+                    $insert_data_query = "INSERT INTO dataset_data (dataset_id, value, label, timestamp) VALUES (?, ?, ?, NOW())";
+                    $data_stmt = $mysqli->prepare($insert_data_query);
+                    
+                    if ($data_stmt) {
+                        for ($i = 0; $i < count($labels); $i++) {
+                            $data_stmt->bind_param("ids", $dataset_id, $values[$i], $labels[$i]);
+                            if (!$data_stmt->execute()) {
+                                error_log("Error inserting data row: " . $data_stmt->error);
+                            }
+                        }
+                        $data_stmt->close();
+                    } else {
+                        error_log("Error preparing data insert statement: " . $mysqli->error);
+                    }
                 } elseif ($file_ext === 'json') {
                     $json_data = json_decode(file_get_contents($file_path), true);
                     if (is_array($json_data)) {
                         $labels = array_column($json_data, 'label');
                         $values = array_column($json_data, 'value');
+                        
+                        // Insert data into dataset_data table
+                        $insert_data_query = "INSERT INTO dataset_data (dataset_id, value, label, timestamp) VALUES (?, ?, ?, NOW())";
+                        $data_stmt = $mysqli->prepare($insert_data_query);
+                        
+                        if ($data_stmt) {
+                            for ($i = 0; $i < count($labels); $i++) {
+                                $data_stmt->bind_param("ids", $dataset_id, $values[$i], $labels[$i]);
+                                if (!$data_stmt->execute()) {
+                                    error_log("Error inserting data row: " . $data_stmt->error);
+                                }
+                            }
+                            $data_stmt->close();
+                        } else {
+                            error_log("Error preparing data insert statement: " . $mysqli->error);
+                        }
                     }
                 } elseif ($file_ext === 'txt') {
                     $lines = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
