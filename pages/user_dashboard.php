@@ -106,4 +106,8 @@ include '../includes/header.php';
     });
 </script>
 
+<<<<<<< HEAD
 <?php include '../includes/footer.php'; ?>
+=======
+</html>
+>>>>>>> a6db44e0494fb0cd950288c9370b290b2d20e840
