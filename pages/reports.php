@@ -197,6 +197,60 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                 justify-content: center;
             }
         }
+        /* Custom styles for notes section */
+        #noteTitle::placeholder,
+        #noteDescription::placeholder {
+            color: #9CA3AF;
+        }
+
+        #noteTitle:hover,
+        #noteDescription:hover {
+            border-color: #93C5FD;
+        }
+
+        #noteTitle:focus,
+        #noteDescription:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Saved notes card styling */
+        .note-card {
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .note-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Save button loading state */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -305,16 +359,37 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                         </div>
 
                         <!-- Notes Section -->
-                        <div class="bg-white rounded-xl shadow-sm p-6">
-                            <h2 class="text-lg font-semibold mb-4">Notes</h2>
-                            <textarea id="reportNotes" 
-                                      class="w-full rounded-lg border-gray-300" 
-                                      rows="4" 
-                                      placeholder="Add your notes here..."></textarea>
-                            <button onclick="saveNotes()" 
-                                    class="mt-2 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                                Save Notes
-                            </button>
+                        <div class="bg-white rounded-xl shadow-sm p-6 mt-6">
+                            <h2 class="text-xl font-semibold text-gray-800 mb-4">Notes</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="noteTitle" class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                                    <input type="text" 
+                                           id="noteTitle" 
+                                           class="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                                           placeholder="Enter note title..."
+                                           autocomplete="off">
+                                </div>
+                                <div>
+                                    <label for="noteDescription" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                                    <textarea id="noteDescription" 
+                                              class="w-full h-32 rounded-lg border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out resize-none"
+                                              placeholder="Enter note description..."
+                                              rows="4"></textarea>
+                                </div>
+                                <button onclick="saveNotes()" 
+                                        class="w-full flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                                    <i class="fas fa-save mr-2"></i> Save Notes
+                                </button>
+                            </div>
+
+                            <!-- Saved Notes List -->
+                            <div class="mt-8 border-t border-gray-200 pt-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Saved Notes</h3>
+                                <div id="savedNotes" class="space-y-4">
+                                    <!-- Notes will be loaded here -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -368,8 +443,8 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
 
     // Load dataset and its statistics
     function loadDataset(datasetId) {
-        currentDataset = { id: datasetId }; // Initialize currentDataset with the ID
-
+        currentDataset = { id: datasetId };
+        
         // Show chart scales when loading dataset
         mainChart.options.scales.x.display = true;
         mainChart.options.scales.y.display = true;
@@ -441,6 +516,9 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                 mainChart.options.scales.y.display = false;
                 mainChart.options.plugins.legend.display = false;
             });
+
+        // Load saved notes for the selected dataset
+        loadSavedNotes();
     }
 
     // Update chart type
@@ -784,6 +862,180 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                     button.disabled = false;
                 }, 2000);
             });
+    }
+
+    // Function to load and display saved notes
+    function loadSavedNotes() {
+        if (!currentDataset) return;
+
+        fetch(`get_notes.php?dataset_id=${currentDataset.id}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const notesContainer = document.getElementById('savedNotes');
+                    if (data.notes.length === 0) {
+                        notesContainer.innerHTML = `
+                            <div class="text-center py-8 text-gray-500">
+                                <i class="fas fa-sticky-note text-4xl mb-2"></i>
+                                <p class="text-sm">No notes saved yet</p>
+                            </div>
+                        `;
+                    } else {
+                        notesContainer.innerHTML = data.notes.map(note => `
+                            <div class="note-card group">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">${note.title}</h4>
+                                        <p class="text-sm text-gray-600 mt-1">${note.description}</p>
+                                        <p class="text-xs text-gray-400 mt-2">${new Date(note.created_at).toLocaleString()}</p>
+                                    </div>
+                                    <button onclick="deleteNote(${note.id})" 
+                                            class="ml-4 text-gray-400 hover:text-red-500 transition-colors duration-150 opacity-0 group-hover:opacity-100">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error loading notes:', error);
+                document.getElementById('savedNotes').innerHTML = `
+                    <div class="text-center py-8 text-red-500">
+                        <i class="fas fa-exclamation-circle text-4xl mb-2"></i>
+                        <p class="text-sm">Error loading notes</p>
+                    </div>
+                `;
+            });
+    }
+
+    // Update the saveNotes function to handle loading state
+    function saveNotes() {
+        const title = document.getElementById('noteTitle').value.trim();
+        const description = document.getElementById('noteDescription').value.trim();
+        const button = document.querySelector('button[onclick="saveNotes()"]');
+        const originalContent = button.innerHTML;
+
+        if (!title) {
+            showError('Please enter a title for your note');
+            return;
+        }
+
+        if (!description) {
+            showError('Please enter a description for your note');
+            return;
+        }
+
+        if (!currentDataset || !currentDataset.id) {
+            showError('Please select a dataset first');
+            return;
+        }
+
+        // Show loading state
+        button.disabled = true;
+        button.classList.add('btn-loading');
+        button.innerHTML = '<span class="opacity-0">Saving...</span>';
+
+        // Save note to database
+        fetch('save_note.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                title: title,
+                description: description,
+                dataset_id: currentDataset.id
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.error || 'Failed to save note');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Clear form
+                document.getElementById('noteTitle').value = '';
+                document.getElementById('noteDescription').value = '';
+                
+                // Show success state
+                button.classList.remove('btn-loading');
+                button.classList.add('bg-green-600');
+                button.innerHTML = '<i class="fas fa-check mr-2"></i> Saved!';
+
+                // Reload saved notes
+                loadSavedNotes();
+            } else {
+                throw new Error(data.error || 'Failed to save note');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showError(error.message || 'Failed to save note. Please try again.');
+            button.classList.remove('btn-loading');
+            button.classList.add('bg-red-600');
+            button.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error';
+        })
+        .finally(() => {
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                button.disabled = false;
+                button.classList.remove('bg-green-600', 'bg-red-600');
+                button.innerHTML = originalContent;
+            }, 2000);
+        });
+    }
+
+    // Function to show error messages
+    function showError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-md transition-opacity duration-500';
+        errorDiv.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        document.body.appendChild(errorDiv);
+
+        // Remove the error message after 3 seconds
+        setTimeout(() => {
+            errorDiv.style.opacity = '0';
+            setTimeout(() => errorDiv.remove(), 500);
+        }, 3000);
+    }
+
+    // Function to delete a note
+    function deleteNote(noteId) {
+        if (!confirm('Are you sure you want to delete this note?')) {
+            return;
+        }
+
+        fetch('delete_note.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ note_id: noteId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadSavedNotes();
+            } else {
+                throw new Error(data.error || 'Failed to delete note');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to delete note');
+        });
     }
     </script>
 </body>

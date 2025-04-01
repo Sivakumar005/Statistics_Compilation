@@ -9,10 +9,15 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'statistics_db');
 
+// Upload directory configuration
+define('UPLOAD_DIR', dirname(__DIR__) . '/uploads/');
+
+// Other configuration constants
+define('SITE_URL', 'http://localhost/Statistics%20project/');
+define('SITE_NAME', 'Statistics Compilation');
+
 // Application configuration
-define('SITE_URL', 'http://localhost/Statistics%20project');
 define('BASE_PATH', dirname(__DIR__));
-define('UPLOAD_DIR', BASE_PATH . '/assets/uploads/');
 define('CHART_DIR', BASE_PATH . '/assets/charts/');
 define('CHART_PREVIEW_DIR', BASE_PATH . '/assets/chart_previews/');
 
@@ -36,6 +41,22 @@ $mysqli->select_db(DB_NAME);
 
 // Set charset to utf8mb4
 $mysqli->set_charset("utf8mb4");
+
+// Create report_notes table if it doesn't exist
+$create_notes_table = "CREATE TABLE IF NOT EXISTS `report_notes` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT NOT NULL,
+    `dataset_id` INT,
+    `title` VARCHAR(255) NOT NULL,
+    `description` TEXT NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`dataset_id`) REFERENCES `datasets`(`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+
+if (!$mysqli->query($create_notes_table)) {
+    error_log("Error creating report_notes table: " . $mysqli->error);
+}
 
 // Create required directories if they don't exist
 $directories = [UPLOAD_DIR, CHART_DIR, CHART_PREVIEW_DIR];
