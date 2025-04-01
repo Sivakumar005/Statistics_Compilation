@@ -467,7 +467,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
         $scatterData = [];
         for ($i = 0; $i < count($values); $i++) {
             $scatterData[] = [
-                'x' => $i + 1,
+                'x' => $i + 1,  // Use numerical index for x-coordinate
                 'y' => floatval($values[$i])
             ];
         }
@@ -497,6 +497,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
         };";
 
         echo "const chartType = '" . htmlspecialchars($chart_data['chart_type']) . "';";
+        echo "const chartLabels = " . json_encode($labels) . ";";  // Store labels separately
     } else {
         echo "const standardChartData = null;";
         echo "const scatterChartData = null;";
@@ -543,9 +544,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
                             display: type !== 'pie',
                             title: {
                                 display: type === 'scatter',
-                                text: 'Month Index'
+                                text: 'Data Points'
                             },
-                            ticks: type === 'scatter' ? {} : undefined
+                            ticks: type === 'scatter' ? {
+                                callback: function(value) {
+                                    return chartLabels[value - 1] || '';
+                                }
+                            } : {
+                                callback: function(value) {
+                                    return chartLabels[value] || '';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y;
+                                    }
+                                    return label;
+                                }
+                            }
                         }
                     },
                     responsive: true,

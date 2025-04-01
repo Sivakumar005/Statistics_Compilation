@@ -890,3 +890,39 @@
 )
 
 [31-Mar-2025 11:36:51 Europe/Berlin] Data rows found: 0
+[31-Mar-2025 17:17:03 Europe/Berlin] Current database: statistics_db
+[31-Mar-2025 17:17:03 Europe/Berlin] Tables in database: 
+[31-Mar-2025 17:17:03 Europe/Berlin] charts
+[31-Mar-2025 17:17:03 Europe/Berlin] dataset_data
+[31-Mar-2025 17:17:03 Europe/Berlin] datasets
+[31-Mar-2025 17:17:03 Europe/Berlin] report_notes
+[31-Mar-2025 17:17:03 Europe/Berlin] saved_reports
+[31-Mar-2025 17:17:03 Europe/Berlin] users
+[31-Mar-2025 17:17:03 Europe/Berlin] Dataset found: Array
+(
+    [id] => 21
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743434209_sample_data.json
+    [upload_date] => 2025-03-31 20:46:49
+)
+
+[31-Mar-2025 17:17:03 Europe/Berlin] Data rows found: 4
+[31-Mar-2025 17:17:17 Europe/Berlin] Current database: statistics_db
+[31-Mar-2025 17:17:17 Europe/Berlin] Tables in database: 
+[31-Mar-2025 17:17:17 Europe/Berlin] charts
+[31-Mar-2025 17:17:17 Europe/Berlin] dataset_data
+[31-Mar-2025 17:17:17 Europe/Berlin] datasets
+[31-Mar-2025 17:17:17 Europe/Berlin] report_notes
+[31-Mar-2025 17:17:17 Europe/Berlin] saved_reports
+[31-Mar-2025 17:17:17 Europe/Berlin] users
+[31-Mar-2025 17:17:17 Europe/Berlin] Dataset found: Array
+(
+    [id] => 21
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743434209_sample_data.json
+    [upload_date] => 2025-03-31 20:46:49
+)
+
+[31-Mar-2025 17:17:17 Europe/Berlin] Data rows found: 4
