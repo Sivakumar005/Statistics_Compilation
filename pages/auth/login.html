@@ -27,6 +27,57 @@
             padding-left: 40px;
             /* Space for the icon */
         }
+
+        /* Popup styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        
+        .popup-overlay.active .popup-box {
+            transform: scale(1);
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background-color: #e2e8f0;
+            margin-top: 1rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #10B981;
+            width: 100%;
+            transition: width 5s linear;
+        }
     </style>
 </head>
 
@@ -62,7 +113,7 @@
                 </button>
             </div>
             <!-- Form -->
-            <form id="auth-form" action="../../pages/auth/login.php" method="POST" class="space-y-6">
+            <form id="auth-form" action="./login.php" method="POST" class="space-y-6">
                 <!-- Email Field (for Sign Up) -->
                 <div id="email-field" class="input-container hidden">
                     <label for="email" class="block text-sm font-medium text-gray-700">EMAIL</label>
@@ -105,6 +156,20 @@
         </div>
     </div>
 
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-box">
+            <svg class="mx-auto h-12 w-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <h3 class="mt-2 text-lg font-medium text-gray-900">Success!</h3>
+            <p class="mt-2 text-sm text-gray-500" id="successMessage"></p>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for Toggling -->
     <script>
         const welcomeSection = document.getElementById('welcome-section');
@@ -116,6 +181,8 @@
         const emailField = document.getElementById('email-field');
         const forgotPassword = document.getElementById('forgot-password');
         const submitButton = document.getElementById('submit-button');
+        const successPopup = document.getElementById('successPopup');
+        const successMessage = document.getElementById('successMessage');
 
         let isSignIn = true;
 
@@ -128,7 +195,7 @@
                 welcomeText.textContent = 'Register with your personal details to use all of site features';
                 toggleButton.textContent = 'SIGN UP';
                 formTitle.textContent = 'Sign In';
-                authForm.action = '../../pages/auth/login.php';
+                authForm.action = './login.php';
                 emailField.classList.add('hidden');
                 forgotPassword.classList.remove('hidden');
                 submitButton.textContent = 'SIGN IN';
@@ -138,10 +205,49 @@
                 welcomeText.textContent = 'Enter your personal details to use all of site features';
                 toggleButton.textContent = 'SIGN IN';
                 formTitle.textContent = 'Create Account';
-                authForm.action = '../../pages/auth/register.php';
+                authForm.action = './register.php';
                 emailField.classList.remove('hidden');
                 forgotPassword.classList.add('hidden');
                 submitButton.textContent = 'SIGN UP';
+            }
+        });
+
+        // Handle form submission
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const formData = new FormData(authForm);
+                const response = await fetch(authForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.text();
+                
+                if (response.ok) {
+                    if (!isSignIn) {
+                        // Show success popup for registration
+                        successMessage.textContent = "Registration successful! Please check your email to verify your account.";
+                        successPopup.classList.add('active');
+                        
+                        setTimeout(() => {
+                            successPopup.classList.remove('active');
+                            // Reset form
+                            authForm.reset();
+                            // Switch back to login
+                            toggleButton.click();
+                        }, 5000);
+                    } else {
+                        // Redirect for login
+                        window.location.href = response.url;
+                    }
+                } else {
+                    // Handle error
+                    console.error('Form submission failed:', result);
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
         });
     </script>

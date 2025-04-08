@@ -1154,3 +1154,1010 @@
 )
 
 [01-Apr-2025 07:34:25 Europe/Berlin] Data rows found: 0
+[04-Apr-2025 07:24:08 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:24:08 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:24:08 Europe/Berlin] charts
+[04-Apr-2025 07:24:08 Europe/Berlin] datasets
+[04-Apr-2025 07:24:08 Europe/Berlin] report_notes
+[04-Apr-2025 07:24:08 Europe/Berlin] user_profiles
+[04-Apr-2025 07:24:08 Europe/Berlin] users
+[04-Apr-2025 07:24:08 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[04-Apr-2025 07:24:08 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:24:08 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:25:45 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:25:45 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:25:45 Europe/Berlin] charts
+[04-Apr-2025 07:25:45 Europe/Berlin] datasets
+[04-Apr-2025 07:25:45 Europe/Berlin] report_notes
+[04-Apr-2025 07:25:45 Europe/Berlin] user_profiles
+[04-Apr-2025 07:25:45 Europe/Berlin] users
+[04-Apr-2025 07:25:45 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:25:45 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:25:45 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:25:48 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:25:48 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:25:48 Europe/Berlin] charts
+[04-Apr-2025 07:25:48 Europe/Berlin] datasets
+[04-Apr-2025 07:25:48 Europe/Berlin] report_notes
+[04-Apr-2025 07:25:48 Europe/Berlin] user_profiles
+[04-Apr-2025 07:25:48 Europe/Berlin] users
+[04-Apr-2025 07:25:48 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[04-Apr-2025 07:25:48 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:25:48 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:29:25 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:29:25 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:29:25 Europe/Berlin] charts
+[04-Apr-2025 07:29:25 Europe/Berlin] datasets
+[04-Apr-2025 07:29:25 Europe/Berlin] report_notes
+[04-Apr-2025 07:29:25 Europe/Berlin] user_profiles
+[04-Apr-2025 07:29:25 Europe/Berlin] users
+[04-Apr-2025 07:29:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:29:25 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:29:25 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:34:56 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:34:56 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:34:56 Europe/Berlin] charts
+[04-Apr-2025 07:34:56 Europe/Berlin] datasets
+[04-Apr-2025 07:34:56 Europe/Berlin] report_notes
+[04-Apr-2025 07:34:56 Europe/Berlin] user_profiles
+[04-Apr-2025 07:34:56 Europe/Berlin] users
+[04-Apr-2025 07:34:56 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:34:56 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:34:56 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:35:52 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:35:52 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:35:52 Europe/Berlin] charts
+[04-Apr-2025 07:35:52 Europe/Berlin] datasets
+[04-Apr-2025 07:35:52 Europe/Berlin] report_notes
+[04-Apr-2025 07:35:52 Europe/Berlin] user_profiles
+[04-Apr-2025 07:35:52 Europe/Berlin] users
+[04-Apr-2025 07:35:52 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:35:52 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:35:52 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:36:44 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:36:44 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:36:44 Europe/Berlin] charts
+[04-Apr-2025 07:36:44 Europe/Berlin] datasets
+[04-Apr-2025 07:36:44 Europe/Berlin] report_notes
+[04-Apr-2025 07:36:44 Europe/Berlin] user_profiles
+[04-Apr-2025 07:36:44 Europe/Berlin] users
+[04-Apr-2025 07:36:44 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:36:44 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:36:44 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:37:53 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:37:53 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:37:53 Europe/Berlin] charts
+[04-Apr-2025 07:37:53 Europe/Berlin] datasets
+[04-Apr-2025 07:37:53 Europe/Berlin] report_notes
+[04-Apr-2025 07:37:53 Europe/Berlin] user_profiles
+[04-Apr-2025 07:37:53 Europe/Berlin] users
+[04-Apr-2025 07:37:53 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:37:53 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:37:53 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:38:49 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:38:49 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:38:49 Europe/Berlin] charts
+[04-Apr-2025 07:38:49 Europe/Berlin] datasets
+[04-Apr-2025 07:38:49 Europe/Berlin] report_notes
+[04-Apr-2025 07:38:49 Europe/Berlin] user_profiles
+[04-Apr-2025 07:38:49 Europe/Berlin] users
+[04-Apr-2025 07:38:49 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:38:49 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:38:49 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:47:07 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:47:07 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:47:07 Europe/Berlin] charts
+[04-Apr-2025 07:47:07 Europe/Berlin] datasets
+[04-Apr-2025 07:47:07 Europe/Berlin] report_notes
+[04-Apr-2025 07:47:07 Europe/Berlin] user_profiles
+[04-Apr-2025 07:47:07 Europe/Berlin] users
+[04-Apr-2025 07:47:07 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:47:07 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:47:07 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:47:43 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:47:43 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:47:43 Europe/Berlin] charts
+[04-Apr-2025 07:47:43 Europe/Berlin] datasets
+[04-Apr-2025 07:47:43 Europe/Berlin] report_notes
+[04-Apr-2025 07:47:43 Europe/Berlin] user_profiles
+[04-Apr-2025 07:47:43 Europe/Berlin] users
+[04-Apr-2025 07:47:43 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:47:43 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:47:43 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:48:33 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:48:33 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:48:33 Europe/Berlin] charts
+[04-Apr-2025 07:48:33 Europe/Berlin] datasets
+[04-Apr-2025 07:48:33 Europe/Berlin] report_notes
+[04-Apr-2025 07:48:33 Europe/Berlin] user_profiles
+[04-Apr-2025 07:48:33 Europe/Berlin] users
+[04-Apr-2025 07:48:33 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:48:33 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:48:33 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:48:53 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:48:53 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:48:53 Europe/Berlin] charts
+[04-Apr-2025 07:48:53 Europe/Berlin] datasets
+[04-Apr-2025 07:48:53 Europe/Berlin] report_notes
+[04-Apr-2025 07:48:53 Europe/Berlin] user_profiles
+[04-Apr-2025 07:48:53 Europe/Berlin] users
+[04-Apr-2025 07:48:53 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:48:53 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:48:53 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:48:55 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:48:55 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:48:55 Europe/Berlin] charts
+[04-Apr-2025 07:48:55 Europe/Berlin] datasets
+[04-Apr-2025 07:48:55 Europe/Berlin] report_notes
+[04-Apr-2025 07:48:55 Europe/Berlin] user_profiles
+[04-Apr-2025 07:48:55 Europe/Berlin] users
+[04-Apr-2025 07:48:55 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 07:48:55 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:48:55 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 07:50:18 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 07:50:18 Europe/Berlin] Tables in database: 
+[04-Apr-2025 07:50:18 Europe/Berlin] charts
+[04-Apr-2025 07:50:18 Europe/Berlin] datasets
+[04-Apr-2025 07:50:18 Europe/Berlin] report_notes
+[04-Apr-2025 07:50:18 Europe/Berlin] user_profiles
+[04-Apr-2025 07:50:18 Europe/Berlin] users
+[04-Apr-2025 07:50:18 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[04-Apr-2025 07:50:18 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 07:50:18 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:01:59 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:01:59 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:01:59 Europe/Berlin] charts
+[04-Apr-2025 08:01:59 Europe/Berlin] datasets
+[04-Apr-2025 08:01:59 Europe/Berlin] report_notes
+[04-Apr-2025 08:01:59 Europe/Berlin] user_profiles
+[04-Apr-2025 08:01:59 Europe/Berlin] users
+[04-Apr-2025 08:01:59 Europe/Berlin] Dataset found: Array
+(
+    [id] => 25
+    [user_id] => 1
+    [dataset_name] => rgafs
+    [file_path] => 1743435462_sample_data.json
+    [upload_date] => 2025-03-31 21:07:42
+)
+
+[04-Apr-2025 08:01:59 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:01:59 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:02:01 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:02:01 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:02:01 Europe/Berlin] charts
+[04-Apr-2025 08:02:01 Europe/Berlin] datasets
+[04-Apr-2025 08:02:01 Europe/Berlin] report_notes
+[04-Apr-2025 08:02:01 Europe/Berlin] user_profiles
+[04-Apr-2025 08:02:01 Europe/Berlin] users
+[04-Apr-2025 08:02:01 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:02:01 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:02:01 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:02:02 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:02:02 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:02:02 Europe/Berlin] charts
+[04-Apr-2025 08:02:02 Europe/Berlin] datasets
+[04-Apr-2025 08:02:02 Europe/Berlin] report_notes
+[04-Apr-2025 08:02:02 Europe/Berlin] user_profiles
+[04-Apr-2025 08:02:02 Europe/Berlin] users
+[04-Apr-2025 08:02:02 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[04-Apr-2025 08:02:02 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:02:02 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:02:03 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:02:03 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:02:03 Europe/Berlin] charts
+[04-Apr-2025 08:02:03 Europe/Berlin] datasets
+[04-Apr-2025 08:02:03 Europe/Berlin] report_notes
+[04-Apr-2025 08:02:03 Europe/Berlin] user_profiles
+[04-Apr-2025 08:02:03 Europe/Berlin] users
+[04-Apr-2025 08:02:03 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[04-Apr-2025 08:02:03 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:02:03 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:02:05 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:02:05 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:02:05 Europe/Berlin] charts
+[04-Apr-2025 08:02:05 Europe/Berlin] datasets
+[04-Apr-2025 08:02:05 Europe/Berlin] report_notes
+[04-Apr-2025 08:02:05 Europe/Berlin] user_profiles
+[04-Apr-2025 08:02:05 Europe/Berlin] users
+[04-Apr-2025 08:02:05 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[04-Apr-2025 08:02:05 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:02:05 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:02:05 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:02:05 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:02:05 Europe/Berlin] charts
+[04-Apr-2025 08:02:05 Europe/Berlin] datasets
+[04-Apr-2025 08:02:05 Europe/Berlin] report_notes
+[04-Apr-2025 08:02:05 Europe/Berlin] user_profiles
+[04-Apr-2025 08:02:05 Europe/Berlin] users
+[04-Apr-2025 08:02:05 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[04-Apr-2025 08:02:05 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:02:05 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:02:06 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:02:06 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:02:06 Europe/Berlin] charts
+[04-Apr-2025 08:02:06 Europe/Berlin] datasets
+[04-Apr-2025 08:02:06 Europe/Berlin] report_notes
+[04-Apr-2025 08:02:06 Europe/Berlin] user_profiles
+[04-Apr-2025 08:02:06 Europe/Berlin] users
+[04-Apr-2025 08:02:06 Europe/Berlin] Dataset found: Array
+(
+    [id] => 18
+    [user_id] => 1
+    [dataset_name] => sample_csv file
+    [file_path] => 1743309282_sample_data.csv
+    [upload_date] => 2025-03-30 10:04:42
+)
+
+[04-Apr-2025 08:02:06 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:02:06 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:22 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:22 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:22 Europe/Berlin] charts
+[04-Apr-2025 08:03:22 Europe/Berlin] datasets
+[04-Apr-2025 08:03:22 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:22 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:22 Europe/Berlin] users
+[04-Apr-2025 08:03:22 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:03:22 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:22 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:24 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:24 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:24 Europe/Berlin] charts
+[04-Apr-2025 08:03:24 Europe/Berlin] datasets
+[04-Apr-2025 08:03:24 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:24 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:24 Europe/Berlin] users
+[04-Apr-2025 08:03:24 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:03:24 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:24 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:25 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:25 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:25 Europe/Berlin] charts
+[04-Apr-2025 08:03:25 Europe/Berlin] datasets
+[04-Apr-2025 08:03:25 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:25 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:25 Europe/Berlin] users
+[04-Apr-2025 08:03:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:03:25 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:25 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:25 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:25 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:25 Europe/Berlin] charts
+[04-Apr-2025 08:03:25 Europe/Berlin] datasets
+[04-Apr-2025 08:03:25 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:25 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:25 Europe/Berlin] users
+[04-Apr-2025 08:03:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:03:25 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:25 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:25 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:25 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:25 Europe/Berlin] charts
+[04-Apr-2025 08:03:25 Europe/Berlin] datasets
+[04-Apr-2025 08:03:25 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:25 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:25 Europe/Berlin] users
+[04-Apr-2025 08:03:25 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:03:25 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:25 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:26 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:26 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:26 Europe/Berlin] charts
+[04-Apr-2025 08:03:26 Europe/Berlin] datasets
+[04-Apr-2025 08:03:26 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:26 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:26 Europe/Berlin] users
+[04-Apr-2025 08:03:26 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:03:26 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:26 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:27 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:27 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:27 Europe/Berlin] charts
+[04-Apr-2025 08:03:27 Europe/Berlin] datasets
+[04-Apr-2025 08:03:27 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:27 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:27 Europe/Berlin] users
+[04-Apr-2025 08:03:27 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:03:27 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:27 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:03:28 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:03:28 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:03:28 Europe/Berlin] charts
+[04-Apr-2025 08:03:28 Europe/Berlin] datasets
+[04-Apr-2025 08:03:28 Europe/Berlin] report_notes
+[04-Apr-2025 08:03:28 Europe/Berlin] user_profiles
+[04-Apr-2025 08:03:28 Europe/Berlin] users
+[04-Apr-2025 08:03:28 Europe/Berlin] Dataset found: Array
+(
+    [id] => 20
+    [user_id] => 1
+    [dataset_name] => sample_txt file
+    [file_path] => 1743311884_sample_data.txt
+    [upload_date] => 2025-03-30 10:48:04
+)
+
+[04-Apr-2025 08:03:28 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:03:28 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:04:43 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:04:43 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:04:43 Europe/Berlin] charts
+[04-Apr-2025 08:04:43 Europe/Berlin] datasets
+[04-Apr-2025 08:04:43 Europe/Berlin] report_notes
+[04-Apr-2025 08:04:43 Europe/Berlin] user_profiles
+[04-Apr-2025 08:04:43 Europe/Berlin] users
+[04-Apr-2025 08:04:43 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:04:43 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:04:43 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:04:44 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:04:44 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:04:44 Europe/Berlin] charts
+[04-Apr-2025 08:04:44 Europe/Berlin] datasets
+[04-Apr-2025 08:04:44 Europe/Berlin] report_notes
+[04-Apr-2025 08:04:44 Europe/Berlin] user_profiles
+[04-Apr-2025 08:04:44 Europe/Berlin] users
+[04-Apr-2025 08:04:44 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:04:44 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:04:44 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:04:44 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:04:44 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:04:44 Europe/Berlin] charts
+[04-Apr-2025 08:04:44 Europe/Berlin] datasets
+[04-Apr-2025 08:04:44 Europe/Berlin] report_notes
+[04-Apr-2025 08:04:44 Europe/Berlin] user_profiles
+[04-Apr-2025 08:04:44 Europe/Berlin] users
+[04-Apr-2025 08:04:44 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:04:44 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:04:44 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:04:44 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:04:44 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:04:44 Europe/Berlin] charts
+[04-Apr-2025 08:04:44 Europe/Berlin] datasets
+[04-Apr-2025 08:04:44 Europe/Berlin] report_notes
+[04-Apr-2025 08:04:44 Europe/Berlin] user_profiles
+[04-Apr-2025 08:04:44 Europe/Berlin] users
+[04-Apr-2025 08:04:44 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:04:44 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:04:44 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:04:44 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:04:44 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:04:44 Europe/Berlin] charts
+[04-Apr-2025 08:04:44 Europe/Berlin] datasets
+[04-Apr-2025 08:04:44 Europe/Berlin] report_notes
+[04-Apr-2025 08:04:44 Europe/Berlin] user_profiles
+[04-Apr-2025 08:04:44 Europe/Berlin] users
+[04-Apr-2025 08:04:44 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:04:44 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:04:44 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:06:52 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:06:52 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:06:52 Europe/Berlin] charts
+[04-Apr-2025 08:06:52 Europe/Berlin] datasets
+[04-Apr-2025 08:06:52 Europe/Berlin] report_notes
+[04-Apr-2025 08:06:52 Europe/Berlin] user_profiles
+[04-Apr-2025 08:06:52 Europe/Berlin] users
+[04-Apr-2025 08:06:52 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:06:52 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:06:52 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:07:01 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:07:01 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:07:01 Europe/Berlin] charts
+[04-Apr-2025 08:07:01 Europe/Berlin] datasets
+[04-Apr-2025 08:07:01 Europe/Berlin] report_notes
+[04-Apr-2025 08:07:01 Europe/Berlin] user_profiles
+[04-Apr-2025 08:07:01 Europe/Berlin] users
+[04-Apr-2025 08:07:01 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:07:01 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:07:01 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:20:05 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:20:05 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:20:05 Europe/Berlin] charts
+[04-Apr-2025 08:20:05 Europe/Berlin] datasets
+[04-Apr-2025 08:20:05 Europe/Berlin] report_notes
+[04-Apr-2025 08:20:05 Europe/Berlin] user_profiles
+[04-Apr-2025 08:20:05 Europe/Berlin] users
+[04-Apr-2025 08:20:05 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:20:05 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:20:05 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:20:06 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:20:06 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:20:06 Europe/Berlin] charts
+[04-Apr-2025 08:20:06 Europe/Berlin] datasets
+[04-Apr-2025 08:20:06 Europe/Berlin] report_notes
+[04-Apr-2025 08:20:06 Europe/Berlin] user_profiles
+[04-Apr-2025 08:20:06 Europe/Berlin] users
+[04-Apr-2025 08:20:06 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:20:06 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:20:06 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:20:06 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:20:06 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:20:06 Europe/Berlin] charts
+[04-Apr-2025 08:20:06 Europe/Berlin] datasets
+[04-Apr-2025 08:20:06 Europe/Berlin] report_notes
+[04-Apr-2025 08:20:06 Europe/Berlin] user_profiles
+[04-Apr-2025 08:20:06 Europe/Berlin] users
+[04-Apr-2025 08:20:06 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:20:06 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:20:06 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 08:20:07 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 08:20:07 Europe/Berlin] Tables in database: 
+[04-Apr-2025 08:20:07 Europe/Berlin] charts
+[04-Apr-2025 08:20:07 Europe/Berlin] datasets
+[04-Apr-2025 08:20:07 Europe/Berlin] report_notes
+[04-Apr-2025 08:20:07 Europe/Berlin] user_profiles
+[04-Apr-2025 08:20:07 Europe/Berlin] users
+[04-Apr-2025 08:20:07 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 08:20:07 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 08:20:07 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 09:47:50 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 09:47:50 Europe/Berlin] Tables in database: 
+[04-Apr-2025 09:47:50 Europe/Berlin] charts
+[04-Apr-2025 09:47:50 Europe/Berlin] datasets
+[04-Apr-2025 09:47:50 Europe/Berlin] report_notes
+[04-Apr-2025 09:47:50 Europe/Berlin] user_profiles
+[04-Apr-2025 09:47:50 Europe/Berlin] users
+[04-Apr-2025 09:47:50 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 09:47:50 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 09:47:50 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 09:47:51 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 09:47:51 Europe/Berlin] Tables in database: 
+[04-Apr-2025 09:47:51 Europe/Berlin] charts
+[04-Apr-2025 09:47:51 Europe/Berlin] datasets
+[04-Apr-2025 09:47:51 Europe/Berlin] report_notes
+[04-Apr-2025 09:47:51 Europe/Berlin] user_profiles
+[04-Apr-2025 09:47:51 Europe/Berlin] users
+[04-Apr-2025 09:47:51 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 09:47:51 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 09:47:51 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 09:48:47 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 09:48:47 Europe/Berlin] Tables in database: 
+[04-Apr-2025 09:48:47 Europe/Berlin] charts
+[04-Apr-2025 09:48:47 Europe/Berlin] datasets
+[04-Apr-2025 09:48:47 Europe/Berlin] report_notes
+[04-Apr-2025 09:48:47 Europe/Berlin] user_profiles
+[04-Apr-2025 09:48:47 Europe/Berlin] users
+[04-Apr-2025 09:48:47 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 09:48:47 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 09:48:47 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 09:49:58 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 09:49:58 Europe/Berlin] Tables in database: 
+[04-Apr-2025 09:49:58 Europe/Berlin] charts
+[04-Apr-2025 09:49:58 Europe/Berlin] datasets
+[04-Apr-2025 09:49:58 Europe/Berlin] report_notes
+[04-Apr-2025 09:49:58 Europe/Berlin] user_profiles
+[04-Apr-2025 09:49:58 Europe/Berlin] users
+[04-Apr-2025 09:49:58 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 09:49:58 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 09:49:58 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 09:50:52 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 09:50:52 Europe/Berlin] Tables in database: 
+[04-Apr-2025 09:50:52 Europe/Berlin] charts
+[04-Apr-2025 09:50:52 Europe/Berlin] datasets
+[04-Apr-2025 09:50:52 Europe/Berlin] report_notes
+[04-Apr-2025 09:50:52 Europe/Berlin] user_profiles
+[04-Apr-2025 09:50:52 Europe/Berlin] users
+[04-Apr-2025 09:50:52 Europe/Berlin] Dataset found: Array
+(
+    [id] => 24
+    [user_id] => 1
+    [dataset_name] => sample_json file
+    [file_path] => 1743435349_sample_data.json
+    [upload_date] => 2025-03-31 21:05:49
+)
+
+[04-Apr-2025 09:50:52 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 09:50:52 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 14:40:38 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 14:40:38 Europe/Berlin] Tables in database: 
+[04-Apr-2025 14:40:38 Europe/Berlin] charts
+[04-Apr-2025 14:40:38 Europe/Berlin] datasets
+[04-Apr-2025 14:40:38 Europe/Berlin] report_notes
+[04-Apr-2025 14:40:38 Europe/Berlin] user_profiles
+[04-Apr-2025 14:40:38 Europe/Berlin] users
+[04-Apr-2025 14:40:38 Europe/Berlin] Dataset found: Array
+(
+    [id] => 26
+    [user_id] => 10
+    [dataset_name] => sample_csv file
+    [file_path] => 1743770178_sample_data.csv
+    [upload_date] => 2025-04-04 18:06:18
+)
+
+[04-Apr-2025 14:40:38 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 14:40:38 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 14:40:44 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 14:40:44 Europe/Berlin] Tables in database: 
+[04-Apr-2025 14:40:44 Europe/Berlin] charts
+[04-Apr-2025 14:40:44 Europe/Berlin] datasets
+[04-Apr-2025 14:40:44 Europe/Berlin] report_notes
+[04-Apr-2025 14:40:44 Europe/Berlin] user_profiles
+[04-Apr-2025 14:40:44 Europe/Berlin] users
+[04-Apr-2025 14:40:44 Europe/Berlin] Dataset found: Array
+(
+    [id] => 27
+    [user_id] => 10
+    [dataset_name] => sample_json file
+    [file_path] => 1743770340_sample_data.csv
+    [upload_date] => 2025-04-04 18:09:00
+)
+
+[04-Apr-2025 14:40:44 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 14:40:44 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 14:40:48 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 14:40:48 Europe/Berlin] Tables in database: 
+[04-Apr-2025 14:40:48 Europe/Berlin] charts
+[04-Apr-2025 14:40:48 Europe/Berlin] datasets
+[04-Apr-2025 14:40:48 Europe/Berlin] report_notes
+[04-Apr-2025 14:40:48 Europe/Berlin] user_profiles
+[04-Apr-2025 14:40:48 Europe/Berlin] users
+[04-Apr-2025 14:40:48 Europe/Berlin] Dataset found: Array
+(
+    [id] => 26
+    [user_id] => 10
+    [dataset_name] => sample_csv file
+    [file_path] => 1743770178_sample_data.csv
+    [upload_date] => 2025-04-04 18:06:18
+)
+
+[04-Apr-2025 14:40:48 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 14:40:48 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 14:41:06 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 14:41:06 Europe/Berlin] Tables in database: 
+[04-Apr-2025 14:41:06 Europe/Berlin] charts
+[04-Apr-2025 14:41:06 Europe/Berlin] datasets
+[04-Apr-2025 14:41:06 Europe/Berlin] report_notes
+[04-Apr-2025 14:41:06 Europe/Berlin] user_profiles
+[04-Apr-2025 14:41:06 Europe/Berlin] users
+[04-Apr-2025 14:41:06 Europe/Berlin] Dataset found: Array
+(
+    [id] => 27
+    [user_id] => 10
+    [dataset_name] => sample_json file
+    [file_path] => 1743770340_sample_data.csv
+    [upload_date] => 2025-04-04 18:09:00
+)
+
+[04-Apr-2025 14:41:06 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 14:41:06 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 14:44:39 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 14:44:39 Europe/Berlin] Tables in database: 
+[04-Apr-2025 14:44:39 Europe/Berlin] charts
+[04-Apr-2025 14:44:39 Europe/Berlin] datasets
+[04-Apr-2025 14:44:39 Europe/Berlin] report_notes
+[04-Apr-2025 14:44:39 Europe/Berlin] user_profiles
+[04-Apr-2025 14:44:39 Europe/Berlin] users
+[04-Apr-2025 14:44:39 Europe/Berlin] Dataset found: Array
+(
+    [id] => 27
+    [user_id] => 10
+    [dataset_name] => sample_json file
+    [file_path] => 1743770340_sample_data.csv
+    [upload_date] => 2025-04-04 18:09:00
+)
+
+[04-Apr-2025 14:44:39 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 14:44:39 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 14:46:08 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 14:46:08 Europe/Berlin] Tables in database: 
+[04-Apr-2025 14:46:08 Europe/Berlin] charts
+[04-Apr-2025 14:46:08 Europe/Berlin] datasets
+[04-Apr-2025 14:46:08 Europe/Berlin] report_notes
+[04-Apr-2025 14:46:08 Europe/Berlin] user_profiles
+[04-Apr-2025 14:46:08 Europe/Berlin] users
+[04-Apr-2025 14:46:08 Europe/Berlin] Dataset found: Array
+(
+    [id] => 27
+    [user_id] => 10
+    [dataset_name] => sample_json file
+    [file_path] => 1743770340_sample_data.csv
+    [upload_date] => 2025-04-04 18:09:00
+)
+
+[04-Apr-2025 14:46:08 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 14:46:08 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}
+[04-Apr-2025 14:46:10 Europe/Berlin] Current database: statistics_db
+[04-Apr-2025 14:46:10 Europe/Berlin] Tables in database: 
+[04-Apr-2025 14:46:10 Europe/Berlin] charts
+[04-Apr-2025 14:46:10 Europe/Berlin] datasets
+[04-Apr-2025 14:46:10 Europe/Berlin] report_notes
+[04-Apr-2025 14:46:10 Europe/Berlin] user_profiles
+[04-Apr-2025 14:46:10 Europe/Berlin] users
+[04-Apr-2025 14:46:10 Europe/Berlin] Dataset found: Array
+(
+    [id] => 26
+    [user_id] => 10
+    [dataset_name] => sample_csv file
+    [file_path] => 1743770178_sample_data.csv
+    [upload_date] => 2025-04-04 18:06:18
+)
+
+[04-Apr-2025 14:46:10 Europe/Berlin] Error in get_dataset_stats.php: Table 'statistics_db.dataset_data' doesn't exist
+[04-Apr-2025 14:46:10 Europe/Berlin] Stack trace: #0 C:\xampp\htdocs\Statistics project\pages\get_dataset_stats.php(78): mysqli->prepare('SELECT id, data...')
+#1 {main}

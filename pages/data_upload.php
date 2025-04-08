@@ -1,17 +1,22 @@
 <?php
-// Start session to track logged-in user
-session_start();
+require_once '../includes/session.php';
+require_once '../includes/db.php';
+require_once '../includes/config.php';
 
-// Redirect to login if not logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
+// Check if user is logged in
+requireLogin();
+
+// Update last activity
+updateLastActivity();
+
+// Check for session timeout
+if (isSessionTimeout()) {
+    clearUserSession();
+    header("Location: ../auth/login.php?error=Session expired. Please login again.");
     exit;
 }
 
-include '../includes/db.php';
-require_once '../includes/config.php';
-
-$user_id = $_SESSION['user_id'];
+$user_id = getCurrentUserId();
 $message = '';
 $error = '';
 
@@ -22,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // Handle file upload and store data in session
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['dataset_file'])) {
-    $user_id = $_SESSION['user_id'];
     $dataset_name = $_POST['dataset_name'];
     $chart_type = isset($_POST['chart_type']) ? $_POST['chart_type'] : 'bar';
     
@@ -85,43 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['dataset_file'])) {
                     // Debug the parsed data
                     error_log("Parsed Labels: " . print_r($labels, true));
                     error_log("Parsed Values: " . print_r($values, true));
-
-                    // Insert data into dataset_data table
-                    $insert_data_query = "INSERT INTO dataset_data (dataset_id, value, label, timestamp) VALUES (?, ?, ?, NOW())";
-                    $data_stmt = $mysqli->prepare($insert_data_query);
-                    
-                    if ($data_stmt) {
-                        for ($i = 0; $i < count($labels); $i++) {
-                            $data_stmt->bind_param("ids", $dataset_id, $values[$i], $labels[$i]);
-                            if (!$data_stmt->execute()) {
-                                error_log("Error inserting data row: " . $data_stmt->error);
-                            }
-                        }
-                        $data_stmt->close();
-                    } else {
-                        error_log("Error preparing data insert statement: " . $mysqli->error);
-                    }
                 } elseif ($file_ext === 'json') {
                     $json_data = json_decode(file_get_contents($file_path), true);
                     if (is_array($json_data)) {
                         $labels = array_column($json_data, 'label');
                         $values = array_column($json_data, 'value');
-                        
-                        // Insert data into dataset_data table
-                        $insert_data_query = "INSERT INTO dataset_data (dataset_id, value, label, timestamp) VALUES (?, ?, ?, NOW())";
-                        $data_stmt = $mysqli->prepare($insert_data_query);
-                        
-                        if ($data_stmt) {
-                            for ($i = 0; $i < count($labels); $i++) {
-                                $data_stmt->bind_param("ids", $dataset_id, $values[$i], $labels[$i]);
-                                if (!$data_stmt->execute()) {
-                                    error_log("Error inserting data row: " . $data_stmt->error);
-                                }
-                            }
-                            $data_stmt->close();
-                        } else {
-                            error_log("Error preparing data insert statement: " . $mysqli->error);
-                        }
                     }
                 } elseif ($file_ext === 'txt') {
                     $lines = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -150,8 +122,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['dataset_file'])) {
                             'labels' => $labels,
                             'datasets' => [[
                                 'label' => $dataset_name,
-                                'data' => $values
+                                'data' => $values,
+                                'backgroundColor' => [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                'borderColor' => [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                'borderWidth' => 1
                             ]]
+                        ],
+                        'options' => [
+                            'responsive' => true,
+                            'plugins' => [
+                                'legend' => [
+                                    'position' => 'top',
+                                ],
+                                'title' => [
+                                    'display' => true,
+                                    'text' => $dataset_name
+                                ]
+                            ]
                         ]
                     ]);
 
@@ -263,28 +264,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
         /* Sidebar styles */
         .fixed-sidebar {
             position: fixed;
-            top: 0;
+            top: 72px; /* Height of navbar + padding */
             left: 0;
-            height: 100%;
+            height: calc(100% - 72px); /* Subtract navbar height */
             transition: transform 0.3s ease-in-out;
             z-index: 50;
         }
         .fixed-sidebar.sidebar-hidden {
             transform: translateX(-100%);
         }
-        /* Navbar adjustment to sit beside the sidebar */
+        /* Navbar adjustment */
         .fixed-navbar {
             position: fixed;
             top: 0;
-            left: 16rem; /* Matches the sidebar width (w-64 = 16rem) */
-            right: 0; /* Ensure it stretches to the right edge */
-            width: auto; /* Let left and right define the width */
-            transition: left 0.3s ease-in-out;
-            z-index: 40;
-        }
-        .fixed-navbar.navbar-expanded {
             left: 0;
-            right: 0; /* Ensure it stretches to the right edge */
+            right: 0;
+            width: 100%;
+            z-index: 40;
         }
         /* Main content adjustment to avoid overlap with sidebar and navbar */
         .main-content {
@@ -324,15 +320,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
             }
             .fixed-sidebar:not(.sidebar-hidden) {
                 transform: translateX(0);
-            }
-            .fixed-navbar {
-                left: 0;
-                right: 0; /* Always full width on mobile */
-                width: auto;
-            }
-            .fixed-navbar.navbar-expanded {
-                left: 0;
-                right: 0;
             }
             .main-content {
                 margin-left: 0;
@@ -394,8 +381,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Data Visualization</h2>
                 <?php if (!isset($_SESSION['chart_data'])): ?>
                     <div class="text-center text-gray-500">
-                        <p>Upload a file to visualize your data.</p>
-                    </div>
+    <i class="fas fa-chart-line fa-2x text-gray-400 mb-2 block"></i>
+    <p>Upload a file to visualize your data.</p>
+</div>
                 <?php else: ?>
                     <div class="mb-4 flex justify-between items-center">
                         <form action="" method="POST" class="flex items-center space-x-4">
@@ -427,18 +415,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
         </main>
     </div>
 
+    <script src="../includes/scripts.js"></script>
     <script>
-    // Sidebar toggle functionality
-    document.getElementById('toggleSidebar').addEventListener('click', function() {
-        const sidebar = document.getElementById('sidebar');
-        const navbar = document.getElementById('navbar');
-        const mainContent = document.getElementById('mainContent');
-
-        sidebar.classList.toggle('sidebar-hidden');
-        navbar.classList.toggle('navbar-expanded');
-        mainContent.classList.toggle('content-expanded');
-    });
-
     // Chart rendering
     <?php
     if (isset($_SESSION['chart_data'])) {
@@ -527,60 +505,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
                 dataToUse = scatterData;
             }
 
+            const options = {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1.5,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: standardData.datasets[0].label
+                    }
+                }
+            };
+
+            // Add specific options for pie chart
+            if (type === 'pie') {
+                options.plugins.tooltip = {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const value = context.raw || 0;
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = Math.round((value / total) * 100);
+                            return `${label}: ${value} (${percentage}%)`;
+                        }
+                    }
+                };
+            } else {
+                // Add scales for non-pie charts
+                options.scales = {
+                    y: {
+                        beginAtZero: true,
+                        display: type === 'bar' || type === 'line' || type === 'histogram' || type === 'scatter',
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    },
+                    x: {
+                        display: type !== 'pie',
+                        title: {
+                            display: type === 'scatter',
+                            text: 'Data Points'
+                        },
+                        ticks: type === 'scatter' ? {
+                            callback: function(value) {
+                                return chartLabels[value - 1] || '';
+                            }
+                        } : {
+                            callback: function(value) {
+                                return chartLabels[value] || '';
+                            }
+                        }
+                    }
+                };
+            }
+
             chartInstance = new Chart(ctx, {
                 type: chartJsType,
                 data: dataToUse,
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            display: type === 'bar' || type === 'line' || type === 'histogram' || type === 'scatter',
-                            title: {
-                                display: true,
-                                text: 'Value'
-                            }
-                        },
-                        x: {
-                            display: type !== 'pie',
-                            title: {
-                                display: type === 'scatter',
-                                text: 'Data Points'
-                            },
-                            ticks: type === 'scatter' ? {
-                                callback: function(value) {
-                                    return chartLabels[value - 1] || '';
-                                }
-                            } : {
-                                callback: function(value) {
-                                    return chartLabels[value] || '';
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        label += context.parsed.y;
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
-                    },
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    aspectRatio: 1.5,
-                    ...(type === 'histogram' && {
-                        barPercentage: 1.0,
-                        categoryPercentage: 1.0
-                    })
-                }
+                options: options
             });
         }
     }

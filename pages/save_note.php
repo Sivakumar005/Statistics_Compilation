@@ -1,9 +1,4 @@
 <?php
-session_start();
-require_once '../includes/config.php';
-require_once '../includes/auth.php';
-require_once '../includes/db.php';
-
 // Prevent any output before JSON response
 error_reporting(0);
 ini_set('display_errors', 0);
@@ -14,85 +9,103 @@ if (ob_get_level()) ob_end_clean();
 header('Content-Type: application/json');
 
 try {
+    // Include necessary files
+    require_once '../includes/session.php';
+    require_once '../includes/db.php';
+    require_once '../includes/config.php';
+
     // Check if user is logged in
-    if (!isLoggedIn()) {
-        throw new Exception('Not authenticated');
+    requireLogin();
+
+    // Update last activity
+    updateLastActivity();
+
+    // Check for session timeout
+    if (isSessionTimeout()) {
+        clearUserSession();
+        throw new Exception("Session expired. Please login again.", 401);
     }
 
     // Get POST data
     $input = file_get_contents('php://input');
     if (empty($input)) {
-        throw new Exception('No data received');
+        throw new Exception('No data received', 400);
     }
 
     $data = json_decode($input, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
-        throw new Exception('Invalid JSON data: ' . json_last_error_msg());
+        throw new Exception('Invalid JSON data: ' . json_last_error_msg(), 400);
     }
 
-    if (!isset($data['title']) || !isset($data['description'])) {
-        throw new Exception('Missing required fields');
+    // Validate required fields
+    if (!isset($data['title']) || !isset($data['description']) || !isset($data['dataset_id'])) {
+        throw new Exception('Missing required fields: title, description, and dataset_id are required', 400);
     }
 
-    $user_id = $_SESSION['user_id'];
+    $user_id = getCurrentUserId();
     $title = trim($data['title']);
     $description = trim($data['description']);
-    $dataset_id = isset($data['dataset_id']) ? (int)$data['dataset_id'] : null;
+    $dataset_id = (int)$data['dataset_id'];
 
     // Validate input
     if (empty($title) || empty($description)) {
-        throw new Exception('Title and description are required');
+        throw new Exception('Title and description cannot be empty', 400);
     }
 
-    // If dataset_id is provided, verify it belongs to the user
-    if ($dataset_id) {
-        $check_query = "SELECT id FROM datasets WHERE id = ? AND user_id = ?";
-        $check_stmt = $mysqli->prepare($check_query);
-        if (!$check_stmt) {
-            throw new Exception('Database error: ' . $mysqli->error);
-        }
-        
-        $check_stmt->bind_param("ii", $dataset_id, $user_id);
-        if (!$check_stmt->execute()) {
-            throw new Exception('Failed to verify dataset: ' . $check_stmt->error);
-        }
-        $result = $check_stmt->get_result();
-        
-        if ($result->num_rows === 0) {
-            throw new Exception('Invalid dataset');
-        }
+    if ($dataset_id <= 0) {
+        throw new Exception('Invalid dataset ID', 400);
     }
 
-    // Insert note into database using correct column names
-    $query = "INSERT INTO report_notes (user_id, dataset_id, title, description, created_at) VALUES (?, ?, ?, ?, NOW())";
+    // Verify dataset belongs to user
+    $check_query = "SELECT * FROM datasets WHERE id = ? AND user_id = ?";
+    $check_stmt = $mysqli->prepare($check_query);
+    if (!$check_stmt) {
+        throw new Exception('Database prepare error: ' . $mysqli->error, 500);
+    }
+    $check_stmt->bind_param("ii", $dataset_id, $user_id);
+    $check_stmt->execute();
+    $result = $check_stmt->get_result();
+    $check_stmt->close();
+
+    if ($result->num_rows === 0) {
+        throw new Exception('Dataset not found or unauthorized', 404);
+    }
+
+    // Insert the note
+    $query = "INSERT INTO report_notes (user_id, dataset_id, title, description, created_at) 
+              VALUES (?, ?, ?, ?, NOW())";
     $stmt = $mysqli->prepare($query);
     if (!$stmt) {
-        throw new Exception('Database error: ' . $mysqli->error);
+        throw new Exception('Database prepare error: ' . $mysqli->error, 500);
     }
-
     $stmt->bind_param("iiss", $user_id, $dataset_id, $title, $description);
-
+    
     if (!$stmt->execute()) {
-        throw new Exception('Failed to save note: ' . $stmt->error);
+        throw new Exception('Failed to save note: ' . $stmt->error, 500);
     }
+
+    $note_id = $mysqli->insert_id;
+    $stmt->close();
 
     // Success response
     echo json_encode([
         'success' => true,
         'message' => 'Note saved successfully',
-        'note_id' => $mysqli->insert_id
+        'note_id' => $note_id
     ]);
 
 } catch (Exception $e) {
-    http_response_code(400);
+    // Set appropriate HTTP status code
+    $status_code = $e->getCode() >= 400 && $e->getCode() <= 599 ? $e->getCode() : 500;
+    http_response_code($status_code);
     echo json_encode([
         'success' => false,
         'error' => $e->getMessage()
     ]);
 } finally {
-    // Ensure the response is complete
-    if ($mysqli) {
+    // Ensure the database connection is closed
+    if (isset($mysqli) && $mysqli) {
         $mysqli->close();
     }
     exit();
-} 
+}

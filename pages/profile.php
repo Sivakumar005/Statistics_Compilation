@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $new_filename = 'profile_' . $user_id . '_' . time() . '.' . $file_extension;
             
             // Create profiles directory if it doesn't exist
-            $profiles_dir = dirname(__DIR__) . '/uploads/profiles/';
+            $profiles_dir = __DIR__ . '/../uploads/profiles/';
             if (!file_exists($profiles_dir)) {
                 if (!mkdir($profiles_dir, 0777, true)) {
                     $error = "Failed to create upload directory. Please check permissions.";
@@ -49,14 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             
-            if (is_writable($profiles_dir)) {
+            if (empty($error) && is_writable($profiles_dir)) {
                 $upload_path = $profiles_dir . $new_filename;
-                
-                // Debug information
-                error_log("Upload directory: " . $profiles_dir);
-                error_log("File path: " . $upload_path);
-                error_log("Upload directory exists: " . (file_exists($profiles_dir) ? 'Yes' : 'No'));
-                error_log("Upload directory is writable: " . (is_writable($profiles_dir) ? 'Yes' : 'No'));
                 
                 if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $upload_path)) {
                     // Delete old profile picture if exists
@@ -64,18 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         unlink($profiles_dir . $profile_picture);
                     }
                     $profile_picture = $new_filename;
-                    error_log("Profile picture uploaded successfully: " . $new_filename);
                 } else {
                     $error = "Error uploading profile picture. Error code: " . $_FILES['profile_picture']['error'];
-                    error_log("Error uploading profile picture: " . $error);
                 }
             } else {
                 $error = "Upload directory is not writable. Please check permissions.";
-                error_log("Upload directory is not writable: " . $profiles_dir);
             }
         } else {
             $error = "Invalid file type. Only JPG, PNG, and GIF files are allowed.";
-            error_log("Invalid file type attempted: " . $file_type);
         }
     }
 
@@ -88,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            location = ?, 
                            phone = ?, 
                            website = ?,
-                           profile_picture = ?,
+                           profile_picture = COALESCE(?, profile_picture),
                            updated_at = NOW()
                            WHERE user_id = ?";
             $update_stmt = $mysqli->prepare($update_query);
@@ -106,11 +96,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = "Profile updated successfully!";
             // Refresh profile data
             $profile_stmt->execute();
+            $profile_result = $profile_stmt->get_result();
+            $profile = $profile_result->fetch_assoc();
         } else {
             $error = "Error updating profile: " . $mysqli->error;
         }
     }
 }
+
+// Get the base URL for profile pictures
+$profile_picture_base_url = '../uploads/profiles/';
 ?>
 
 <!DOCTYPE html>
@@ -121,29 +116,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Profile - Statistics Compilation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../includes/styles.css" rel="stylesheet">
     <style>
+        /* Sidebar and Navbar Styles */
+        .fixed-sidebar {
+            position: fixed;
+            top: 72px; /* Adjusted to account for navbar height */
+            left: 0;
+            height: calc(100% - 72px); /* Adjusted to account for navbar height */
+            width: 16rem;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+        
+        .fixed-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 20;
+        }
+        
+        .main-content {
+            margin-left: 16rem; /* Width of sidebar */
+            transition: margin-left 0.3s ease;
+        }
+        
+        .sidebar-hidden {
+            transform: translateX(-16rem);
+        }
+        
+        .content-expanded {
+            margin-left: 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .fixed-sidebar {
+                transform: translateX(-16rem);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        
+        /* Profile picture styles */
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
         .profile-picture-preview {
             width: 150px;
             height: 150px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #e5e7eb;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .profile-info {
             display: none;
         }
         .profile-form {
-            display: block;
+            display: none;
         }
         .profile-info.active {
             display: block;
         }
         .profile-form.active {
             display: block;
-        }
-        .profile-form.hidden {
-            display: none;
         }
         .info-item {
             display: flex;
@@ -193,10 +236,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Profile View -->
-            <div id="profileInfo" class="profile-info bg-white rounded-lg shadow-md overflow-hidden">
+            <div id="profileInfo" class="profile-info active bg-white rounded-lg shadow-md overflow-hidden">
                 <div class="p-6">
                     <div class="flex items-center space-x-6 mb-8">
-                        <img src="<?php echo $profile && $profile['profile_picture'] ? dirname($_SERVER['PHP_SELF']) . '/../uploads/profiles/' . $profile['profile_picture'] : 'https://via.placeholder.com/150'; ?>" 
+                        <img src="<?php echo $profile && $profile['profile_picture'] ? $profile_picture_base_url . htmlspecialchars($profile['profile_picture']) : 'https://via.placeholder.com/150'; ?>" 
                              alt="Profile Picture" 
                              class="profile-picture-preview">
                         <div>
@@ -239,7 +282,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Profile Form -->
-            <div id="profileForm" class="profile-form hidden bg-white p-6 rounded-lg shadow-md">
+            <div id="profileForm" class="profile-form bg-white p-6 rounded-lg shadow-md">
                 <?php if (!empty($message)): ?>
                     <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-md"><?php echo $message; ?></div>
                 <?php endif; ?>
@@ -253,7 +296,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="flex items-center space-x-4">
                         <div class="relative">
                             <img id="profilePreview" 
-                                 src="<?php echo $profile && $profile['profile_picture'] ? dirname($_SERVER['PHP_SELF']) . '/../uploads/profiles/' . $profile['profile_picture'] : 'https://via.placeholder.com/150'; ?>" 
+                                 src="<?php echo $profile && $profile['profile_picture'] ? $profile_picture_base_url . htmlspecialchars($profile['profile_picture']) : 'https://via.placeholder.com/150'; ?>" 
                                  alt="" 
                                  class="profile-picture-preview">
                             <label for="profile_picture" class="absolute bottom-0 right-0 bg-indigo-600 text-white p-2 rounded-full cursor-pointer hover:bg-indigo-700">
@@ -335,18 +378,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </main>
     </div>
 
+    <script src="../includes/scripts.js"></script>
     <script>
-    // Sidebar toggle functionality
-    document.getElementById('toggleSidebar').addEventListener('click', function() {
-        const sidebar = document.getElementById('sidebar');
-        const navbar = document.getElementById('navbar');
-        const mainContent = document.getElementById('mainContent');
-
-        sidebar.classList.toggle('sidebar-hidden');
-        navbar.classList.toggle('navbar-expanded');
-        mainContent.classList.toggle('content-expanded');
-    });
-
     // Profile picture preview
     function previewImage(input) {
         if (input.files && input.files[0]) {
@@ -361,19 +394,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Edit profile functionality
     document.getElementById('editProfileBtn').addEventListener('click', function() {
         document.getElementById('profileInfo').classList.remove('active');
-        document.getElementById('profileForm').classList.remove('hidden');
+        document.getElementById('profileForm').classList.add('active');
         this.style.display = 'none';
     });
 
     // Cancel edit functionality
     document.getElementById('cancelEditBtn').addEventListener('click', function() {
         document.getElementById('profileInfo').classList.add('active');
-        document.getElementById('profileForm').classList.add('hidden');
+        document.getElementById('profileForm').classList.remove('active');
         document.getElementById('editProfileBtn').style.display = 'flex';
     });
-
-    // Show profile info by default
-    document.getElementById('profileInfo').classList.add('active');
     </script>
 </body>
 </html> 
