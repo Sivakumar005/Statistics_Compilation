@@ -2,30 +2,35 @@
 .fixed-navbar {
     position: fixed;
     top: 0;
+    left: 16rem;
+    right: 0;
+    width: auto;
+    transition: left 0.3s ease-in-out;
+    z-index: 40;
+}
+
+.fixed-navbar.navbar-expanded {
     left: 0;
     right: 0;
-    z-index: 1000;
-    background-color: white;
 }
 
 .fixed-sidebar {
-    position: fixed;
-    top: 72px; /* Height of navbar + padding */
+    /* position: fixed; */
+    top: 4rem;
     left: 0;
-    bottom: 0;
-    width: 256px; /* w-64 */
-    z-index: 900;
+    height: 100%;
     transition: transform 0.3s ease-in-out;
+    z-index: 50;
 }
 
 .main-content {
-    margin-left: 256px; /* Same as sidebar width */
-    margin-top: 72px; /* Same as navbar height */
+    margin-left: 16rem;
+    margin-top: 4rem;
     transition: margin-left 0.3s ease-in-out;
 }
 
 .sidebar-hidden {
-    transform: translateX(-256px);
+    transform: translateX(-16rem);
 }
 
 .content-expanded {
@@ -50,7 +55,13 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .fixed-sidebar {
-        transform: translateX(-256px);
+        transform: translateX(-16rem);
+    }
+    
+    .fixed-navbar {
+        left: 0;
+        right: 0;
+        width: 100%;
     }
     
     .main-content {

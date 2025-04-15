@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Sign Up - Statistics Compilation</title>
+    <title>Login - StatSync</title>
     <!-- Include Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Font Awesome for icons -->
@@ -26,6 +26,39 @@
         .input-container input {
             padding-left: 40px;
             /* Space for the icon */
+        }
+
+        /* Logo styles */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            object-fit: contain;
+            /* Remove the filter since we want to show the original logo */
+            /* filter: brightness(0) invert(1); */
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 500;
+            color: white;
+            margin-top: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .logo-tagline {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
         }
 
         /* Popup styles */
@@ -83,33 +116,37 @@
 
 <body class="bg-gradient-to-br from-white to-purple-100 flex items-center justify-center min-h-screen">
     <div class="bg-white rounded-2xl shadow-lg flex max-w-2xl w-full">
-        <!-- Left Section- Sign In Button -->
+        <!-- Left Section with Logo and Welcome Message -->
         <div id="welcome-section"
-            class="w-1/2 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-l-2xl p-8 flex flex-col justify-center items-center text-white">
-            <h2 id="welcome-title" class="text-2xl font-bold mb-4">Welcome, Friend!</h2>
-            <p id="welcome-text" class="text-center mb-6">Register with your personal details to use all of site
-                features</p>
-            <button id="toggle-to-signup"
-                class="bg-white text-yellow-500 px-6 py-2 rounded-lg hover:bg-gray-100 transition">SIGN UP</button>
-        </div>
-        <!-- Right Section: Form (Sign In / Sign Up) -->
-        <div id="form-section" class="w-1/2 p-8">
-            <!-- Logo or Brand -->
-            <div class="text-center mb-2">
-                <h1 class="text-2xl font-bold text-gray-800">Statistics Compilation</h1>
-                <p class="text-gray-600">Automate your data analysis</p>
+            class="w-1/2 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-l-2xl p-8 flex flex-col justify-between items-center text-white">
+            <!-- Logo and Brand -->
+            <div class="logo-container">
+                <img src="/Statistics%20project/assets/images/logo.png" alt="StatSync Logo" class="logo-image">
+                <h1 class="logo-text">StatSync</h1>
+                <p class="logo-tagline">Conveys seamless synchronization and automation of statistical data</p>
             </div>
-            <h2 id="form-title" class="text-xl font-bold mb-6 text-center">Sign In</h2>
+            
+            <div class="text-center">
+                <h2 id="welcome-title" class="text-2xl font-bold mb-4">Welcome, Friend!</h2>
+                <p id="welcome-text" class="text-center mb-6">Register with your personal details to use all of site features</p>
+                <button id="toggle-to-signup"
+                    class="bg-white text-yellow-500 px-6 py-2 rounded-lg hover:bg-gray-100 transition">SIGN UP</button>
+            </div>
+        </div>
+
+        <!-- Right Section: Form -->
+        <div id="form-section" class="w-1/2 p-8">
+            <h2 id="form-title" class="text-2xl font-bold mb-8 text-center text-gray-800">Sign In</h2>
             <!-- Social Login Icons -->
             <div class="flex space-x-4 mb-6 justify-center">
                 <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span class="text-xl">G</span>
+                    <span class="text-xl"><img src="\Statistics project\assets\images\google-color-svgrepo-com (1).svg" alt="Google" class="w-6 h-6"></span>
                 </button>
                 <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span class="text-xl">f</span>
+                    <span class="text-xl"><img src="/Statistics project/assets/images/facebook-color-svgrepo-com (1).svg" alt="Facebook" class="w-6 h-6"></span>
                 </button>
                 <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span class="text-xl">in</span>
+                    <span class="text-xl"><img src="/Statistics project/assets/images/linkedin-svgrepo-com.svg" alt="Instagram" class="w-6 h-6"></span>
                 </button>
             </div>
             <!-- Form -->

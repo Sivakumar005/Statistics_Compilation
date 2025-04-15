@@ -50,6 +50,44 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
             overflow-x: hidden;
         }
 
+        /* Navbar and Sidebar positioning matching data_upload.php */
+        nav#navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 40;
+        }
+
+        aside#sidebar {
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            width: 16rem; /* Matches w-64 in Tailwind (256px) */
+            height: calc(100% - 4rem);
+            z-index: 50;
+            transition: transform 0.3s ease-in-out; /* Smooth transition for sidebar */
+        }
+
+        .main-content {
+            margin-left: 16rem;
+            padding-top: 6rem;
+            transition: margin-left 0.3s ease-in-out; /* Smooth transition for main content */
+            min-height: 100vh;
+        }
+
+        /* Sidebar hidden state using transform */
+        aside#sidebar.hidden {
+            transform: translateX(-100%);
+        }
+
+        /* Main content expanded state */
+        .main-content.content-expanded {
+            margin-left: 0;
+        }
+
+        /* Original styles below */
         .report-card {
             transition: all 0.2s ease-in-out;
             background-color: white;
@@ -152,17 +190,6 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
             right: 0;
         }
 
-        /* Main content adjustment to avoid overlap with sidebar and navbar */
-        .main-content {
-            margin-left: 16rem;
-            padding-top: 8rem;
-            transition: margin-left 0.3s ease-in-out;
-        }
-
-        .main-content.content-expanded {
-            margin-left: 0;
-        }
-
         /* Active menu item style */
         .menu-item.active {
             background-color: #e0f2fe;
@@ -188,34 +215,15 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .fixed-sidebar {
+            aside#sidebar {
                 transform: translateX(-100%);
             }
 
-            .fixed-sidebar.sidebar-hidden {
-                transform: translateX(-100%);
-            }
-
-            .fixed-sidebar:not(.sidebar-hidden) {
+            aside#sidebar:not(.hidden) {
                 transform: translateX(0);
             }
 
-            .fixed-navbar {
-                left: 0;
-                right: 0;
-                width: auto;
-            }
-
-            .fixed-navbar.navbar-expanded {
-                left: 0;
-                right: 0;
-            }
-
             .main-content {
-                margin-left: 0;
-            }
-
-            .main-content.content-expanded {
                 margin-left: 0;
             }
 
@@ -295,7 +303,7 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
     <!-- Sidebar and Main Content -->
     <div class="flex">
         <!-- Sidebar -->
-        <?php include '../includes/sidebar.php'; ?>
+        <?php include '../includes/sidebar.php';  ?>
 
         <!-- Main Content -->
         <main class="flex-1 main-content p-8" id="mainContent">
@@ -370,7 +378,6 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                     <!-- Sidebar -->
                     <div class="space-y-6">
                         <!-- Filters -->
-                        <!-- Filters -->
                         <div class="bg-white rounded-xl shadow-sm p-6">
                             <h2 class="text-lg font-semibold mb-4">Filters</h2>
                             <div class="space-y-6">
@@ -431,14 +438,15 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
     </div>
 
     <script>
-        // Sidebar toggle functionality
+        // Sidebar toggle functionality - Updated to use 'hidden' class
         document.getElementById('toggleSidebar').addEventListener('click', function() {
             const sidebar = document.getElementById('sidebar');
-            const navbar = document.getElementById('navbar');
             const mainContent = document.getElementById('mainContent');
 
-            sidebar.classList.toggle('sidebar-hidden');
-            navbar.classList.toggle('navbar-expanded');
+            // Toggle the 'hidden' class for sidebar
+            sidebar.classList.toggle('hidden');
+
+            // Toggle the 'content-expanded' class for main content
             mainContent.classList.toggle('content-expanded');
         });
 
@@ -1041,7 +1049,6 @@ $datasets = $result->fetch_all(MYSQLI_ASSOC);
                 });
         }
 
-        // Update the saveNotes function to handle loading state
         // Update the saveNotes function to handle loading state
         function saveNotes() {
             const title = document.getElementById('noteTitle').value.trim();

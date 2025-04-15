@@ -118,50 +118,6 @@ $profile_picture_base_url = '../uploads/profiles/';
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="../includes/styles.css" rel="stylesheet">
     <style>
-        /* Sidebar and Navbar Styles */
-        .fixed-sidebar {
-            position: fixed;
-            top: 72px; /* Adjusted to account for navbar height */
-            left: 0;
-            height: calc(100% - 72px); /* Adjusted to account for navbar height */
-            width: 16rem;
-            z-index: 10;
-            transition: transform 0.3s ease;
-        }
-        
-        .fixed-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 20;
-        }
-        
-        .main-content {
-            margin-left: 16rem; /* Width of sidebar */
-            transition: margin-left 0.3s ease;
-        }
-        
-        .sidebar-hidden {
-            transform: translateX(-16rem);
-        }
-        
-        .content-expanded {
-            margin-left: 0;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .fixed-sidebar {
-                transform: translateX(-16rem);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-        }
-        
         /* Profile picture styles */
         .profile-picture {
             width: 150px;

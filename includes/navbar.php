@@ -4,19 +4,17 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-<nav class="bg-white shadow-md p-4 fixed-navbar" id="navbar">
+<nav class="bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-md p-4" id="navbar" style="position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 40;">
     <div class="flex items-center justify-between">
         <div class="flex items-center">
-            <!-- Toggle Button - Only show on non-dashboard pages -->
-            <?php if (basename($_SERVER['PHP_SELF']) !== 'user_dashboard.php'): ?>
+            <!-- Toggle Button -->
             <button class="toggle-btn" id="toggleSidebar">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-            <?php endif; ?>
-            <h1 class="text-xl font-bold text-gray-800 ml-4">Statistics Compilation</h1>
+            <h1 class="text-xl font-bold text-white ml-4">StatSync</h1>
         </div>
         <div class="flex items-center space-x-4">
-            <span class="text-gray-700">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
+            <span class="text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
             <!-- Profile Dropdown -->
             <div class="relative">
                 <button id="profileButton" class="flex items-center space-x-2 focus:outline-none">
@@ -51,15 +49,23 @@ document.addEventListener('DOMContentLoaded', function() {
     profileButton.addEventListener('click', function(e) {
         e.stopPropagation();
         isOpen = !isOpen;
-        profileDropdown.classList.toggle('hidden');
+        profileDropdown.classList.toggle('hidden', !isOpen);
     });
 
     // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
-        if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
+        if (isOpen && !profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
             isOpen = false;
             profileDropdown.classList.add('hidden');
         }
+    });
+
+    // Close dropdown when clicking a dropdown item
+    profileDropdown.querySelectorAll('a').forEach(item => {
+        item.addEventListener('click', function() {
+            isOpen = false;
+            profileDropdown.classList.add('hidden');
+        });
     });
 });
 </script>

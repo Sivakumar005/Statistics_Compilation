@@ -2,13 +2,23 @@
 require_once '../../includes/config.php';
 require_once '../../includes/db.php';
 
+// Start session at the beginning
+session_start();
+
+// Check if user is already logged in
+if (isset($_SESSION['user_id'])) {
+    header('Location: ' . SITE_URL . 'pages/user_dashboard.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
     
     // Validate input
     if (empty($username) || empty($password)) {
-        header('Location: ' . SITE_URL . 'pages/auth/login.html?error=empty_fields');
+        $_SESSION['error'] = 'Please fill in all fields';
+        header('Location: ' . SITE_URL . 'pages/auth/login.php');
         exit();
     }
     
@@ -19,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->get_result();
     
     if ($result->num_rows === 0) {
-        header('Location: ' . SITE_URL . 'pages/auth/login.html?error=invalid_credentials');
+        $_SESSION['error'] = 'Invalid username or password';
+        header('Location: ' . SITE_URL . 'pages/auth/login.php');
         exit();
     }
     
@@ -27,29 +38,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Verify password
     if (!password_verify($password, $user['password'])) {
-        header('Location: ' . SITE_URL . 'pages/auth/login.html?error=invalid_credentials');
+        $_SESSION['error'] = 'Invalid username or password';
+        header('Location: ' . SITE_URL . 'pages/auth/login.php');
         exit();
     }
     
     // Check if email is verified
     if (!$user['is_verified']) {
-        header('Location: ' . SITE_URL . 'pages/auth/login.html?error=not_verified');
+        $_SESSION['error'] = 'Please verify your email before logging in';
+        header('Location: ' . SITE_URL . 'pages/auth/login.php');
         exit();
     }
     
-    // Start session and set user data
-    session_start();
+    // Set user data in session
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
+    
+    // Clear any error messages
+    unset($_SESSION['error']);
     
     // Redirect to dashboard
     header('Location: ' . SITE_URL . 'pages/user_dashboard.php');
     exit();
 }
 
-// If not a POST request, redirect to login page
-header('Location: ' . SITE_URL . 'pages/auth/login.html');
-exit();
+// If not a POST request, show login form
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,28 +77,11 @@ exit();
         <div class="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
             <h2 class="text-3xl font-bold text-center">Sign In</h2>
             
-            <?php if (isset($_GET['error'])): ?>
+            <?php if (isset($_SESSION['error'])): ?>
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    <?php
-                    switch ($_GET['error']) {
-                        case 'empty_fields':
-                            echo 'Please fill in all fields';
-                            break;
-                        case 'invalid_credentials':
-                            echo 'Invalid username or password';
-                            break;
-                        case 'not_verified':
-                            echo 'Please verify your email address before logging in';
-                            break;
-                        case 'invalid_token':
-                            echo 'Invalid verification token';
-                            break;
-                        case 'no_token':
-                            echo 'No verification token provided';
-                            break;
-                        default:
-                            echo 'An error occurred';
-                    }
+                    <?php 
+                    echo htmlspecialchars($_SESSION['error']);
+                    unset($_SESSION['error']);
                     ?>
                 </div>
             <?php endif; ?>
@@ -96,7 +92,29 @@ exit();
                 </div>
             <?php endif; ?>
             
-            
+            <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="username" class="sr-only">Username</label>
+                        <input id="username" name="username" type="text" required 
+                               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                               placeholder="Username">
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" required 
+                               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                               placeholder="Password">
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" 
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Sign in
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </body>

@@ -1,4 +1,4 @@
-<aside class="bg-white w-64 min-h-screen p-6 shadow-lg fixed-sidebar" id="sidebar">
+<aside class="bg-white w-64 min-h-screen p-6 shadow-lg" id="sidebar" style="position: fixed; top: 4rem; left: 0; height: calc(100% - 4rem); z-index: 30; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;">
     <div class="mb-8">
         <h2 class="text-xl font-bold text-gray-800">Menu</h2>
     </div>

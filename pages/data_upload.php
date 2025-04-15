@@ -217,16 +217,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
     <title>Data Upload - Statistics Compilation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../includes/styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Reset default margins and ensure full viewport width */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden; /* Prevent horizontal scrollbar */
-        }
         /* Form input styles */
         input[type="text"] {
             background-color: #ffffff;
@@ -260,73 +253,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_chart'])) {
         select option {
             background-color: #ffffff;
             color: #1f2937;
-        }
-        /* Sidebar styles */
-        .fixed-sidebar {
-            position: fixed;
-            top: 72px; /* Height of navbar + padding */
-            left: 0;
-            height: calc(100% - 72px); /* Subtract navbar height */
-            transition: transform 0.3s ease-in-out;
-            z-index: 50;
-        }
-        .fixed-sidebar.sidebar-hidden {
-            transform: translateX(-100%);
-        }
-        /* Navbar adjustment */
-        .fixed-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 40;
-        }
-        /* Main content adjustment to avoid overlap with sidebar and navbar */
-        .main-content {
-            margin-left: 16rem; /* Matches the sidebar width (w-64 = 16rem) */
-            padding-top: 5rem; /* Matches the navbar height (pt-20) */
-            transition: margin-left 0.3s ease-in-out;
-        }
-        .main-content.content-expanded {
-            margin-left: 0;
-        }
-        /* Active menu item style */
-        .menu-item.active {
-            background-color: #e0f2fe;
-            color: #1e40af;
-            font-weight: 600;
-        }
-        .menu-item.active i {
-            color: #1e40af;
-        }
-        /* Toggle button styles */
-        .toggle-btn {
-            cursor: pointer;
-            padding: 0.5rem;
-            color: #1f2937;
-            transition: color 0.3s ease-in-out;
-        }
-        .toggle-btn:hover {
-            color: #4f46e5;
-        }
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .fixed-sidebar {
-                transform: translateX(-100%);
-            }
-            .fixed-sidebar.sidebar-hidden {
-                transform: translateX(-100%);
-            }
-            .fixed-sidebar:not(.sidebar-hidden) {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .main-content.content-expanded {
-                margin-left: 0;
-            }
         }
     </style>
 </head>
