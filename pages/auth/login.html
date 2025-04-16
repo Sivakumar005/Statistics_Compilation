@@ -5,12 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - StatSync</title>
-    <!-- Include Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Include Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Custom styles for input container */
         .input-container {
             position: relative;
         }
@@ -25,22 +22,11 @@
 
         .input-container input {
             padding-left: 40px;
-            /* Space for the icon */
         }
 
-        /* Logo styles */
         .logo-container {
             text-align: center;
             margin-bottom: 2rem;
-        }
-
-        .logo-image {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            object-fit: contain;
-            /* Remove the filter since we want to show the original logo */
-            /* filter: brightness(0) invert(1); */
         }
 
         .logo-text {
@@ -60,106 +46,41 @@
             margin-right: auto;
             line-height: 1.4;
         }
-
-        /* Popup styles */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-        
-        .popup-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .popup-box {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transform: scale(0.9);
-            transition: transform 0.3s;
-        }
-        
-        .popup-overlay.active .popup-box {
-            transform: scale(1);
-        }
-        
-        .progress-bar {
-            height: 4px;
-            background-color: #e2e8f0;
-            margin-top: 1rem;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .progress-bar-fill {
-            height: 100%;
-            background-color: #10B981;
-            width: 100%;
-            transition: width 5s linear;
-        }
     </style>
 </head>
 
 <body class="bg-gradient-to-br from-white to-purple-100 flex items-center justify-center min-h-screen">
     <div class="bg-white rounded-2xl shadow-lg flex max-w-2xl w-full">
         <!-- Left Section with Logo and Welcome Message -->
-        <div id="welcome-section"
-            class="w-1/2 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-l-2xl p-8 flex flex-col justify-between items-center text-white">
-            <!-- Logo and Brand -->
+        <div class="w-1/2 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-l-2xl p-8 flex flex-col justify-between items-center text-white">
             <div class="logo-container">
-                <img src="/Statistics%20project/assets/images/logo.png" alt="StatSync Logo" class="logo-image">
                 <h1 class="logo-text">StatSync</h1>
-                <p class="logo-tagline">Conveys seamless synchronization and automation of statistical data</p>
+                <p class="logo-tagline font-semibold">Conveys seamless synchronization and automation of statistical data</p>
             </div>
-            
             <div class="text-center">
-                <h2 id="welcome-title" class="text-2xl font-bold mb-4">Welcome, Friend!</h2>
-                <p id="welcome-text" class="text-center mb-6">Register with your personal details to use all of site features</p>
-                <button id="toggle-to-signup"
-                    class="bg-white text-yellow-500 px-6 py-2 rounded-lg hover:bg-gray-100 transition">SIGN UP</button>
+                <h2 class="text-2xl font-bold mb-4">Welcome, Friend!</h2>
+                <p class="mb-6">Don't have an account? Create one to explore all features.</p>
+                <a href="signup.html" class="bg-white text-yellow-500 px-6 py-2 rounded-lg hover:bg-gray-100 transition">SIGN UP</a>
             </div>
         </div>
 
         <!-- Right Section: Form -->
-        <div id="form-section" class="w-1/2 p-8">
-            <h2 id="form-title" class="text-2xl font-bold mb-8 text-center text-gray-800">Sign In</h2>
+        <div class="w-1/2 p-8">
+            <h2 class="text-2xl font-bold mb-8 text-center text-gray-800">Sign In</h2>
             <!-- Social Login Icons -->
             <div class="flex space-x-4 mb-6 justify-center">
                 <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span class="text-xl"><img src="\Statistics project\assets\images\google-color-svgrepo-com (1).svg" alt="Google" class="w-6 h-6"></span>
+                    <img src="/Statistics project/assets/images/google-color-svgrepo-com (1).svg" alt="Google" class="w-6 h-6">
                 </button>
                 <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span class="text-xl"><img src="/Statistics project/assets/images/facebook-color-svgrepo-com (1).svg" alt="Facebook" class="w-6 h-6"></span>
+                    <img src="/Statistics project/assets/images/facebook-color-svgrepo-com (1).svg" alt="Facebook" class="w-6 h-6">
                 </button>
                 <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span class="text-xl"><img src="/Statistics project/assets/images/linkedin-svgrepo-com.svg" alt="Instagram" class="w-6 h-6"></span>
+                    <img src="/Statistics project/assets/images/linkedin-svgrepo-com.svg" alt="LinkedIn" class="w-6 h-6">
                 </button>
             </div>
             <!-- Form -->
-            <form id="auth-form" action="./login.php" method="POST" class="space-y-6">
-                <!-- Email Field (for Sign Up) -->
-                <div id="email-field" class="input-container hidden">
-                    <label for="email" class="block text-sm font-medium text-gray-700">EMAIL</label>
-                    <div class="relative">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" id="email" name="email" placeholder="Enter your email"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-                </div>
+            <form action="login.php" method="POST" class="space-y-6">
                 <!-- Username Field -->
                 <div class="input-container">
                     <label for="username" class="block text-sm font-medium text-gray-700">USERNAME</label>
@@ -178,13 +99,13 @@
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                 </div>
-                <!-- Forgot Password Link (for Sign In) -->
-                <div id="forgot-password" class="text-right">
+                <!-- Forgot Password Link -->
+                <div class="text-right">
                     <a href="#" class="text-sm text-gray-600 hover:underline">Forgot Your Password?</a>
                 </div>
                 <!-- Submit Button -->
                 <div>
-                    <button id="submit-button" type="submit"
+                    <button type="submit"
                         class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
                         SIGN IN
                     </button>
@@ -192,102 +113,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Success Popup -->
-    <div class="popup-overlay" id="successPopup">
-        <div class="popup-box">
-            <svg class="mx-auto h-12 w-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <h3 class="mt-2 text-lg font-medium text-gray-900">Success!</h3>
-            <p class="mt-2 text-sm text-gray-500" id="successMessage"></p>
-            <div class="progress-bar">
-                <div class="progress-bar-fill"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript for Toggling -->
-    <script>
-        const welcomeSection = document.getElementById('welcome-section');
-        const welcomeTitle = document.getElementById('welcome-title');
-        const welcomeText = document.getElementById('welcome-text');
-        const toggleButton = document.getElementById('toggle-to-signup');
-        const formTitle = document.getElementById('form-title');
-        const authForm = document.getElementById('auth-form');
-        const emailField = document.getElementById('email-field');
-        const forgotPassword = document.getElementById('forgot-password');
-        const submitButton = document.getElementById('submit-button');
-        const successPopup = document.getElementById('successPopup');
-        const successMessage = document.getElementById('successMessage');
-
-        let isSignIn = true;
-
-        toggleButton.addEventListener('click', () => {
-            isSignIn = !isSignIn;
-
-            if (isSignIn) {
-                // Switch to Sign In
-                welcomeTitle.textContent = 'Welcome, Friend!';
-                welcomeText.textContent = 'Register with your personal details to use all of site features';
-                toggleButton.textContent = 'SIGN UP';
-                formTitle.textContent = 'Sign In';
-                authForm.action = './login.php';
-                emailField.classList.add('hidden');
-                forgotPassword.classList.remove('hidden');
-                submitButton.textContent = 'SIGN IN';
-            } else {
-                // Switch to Sign Up
-                welcomeTitle.textContent = 'Welcome Back!';
-                welcomeText.textContent = 'Enter your personal details to use all of site features';
-                toggleButton.textContent = 'SIGN IN';
-                formTitle.textContent = 'Create Account';
-                authForm.action = './register.php';
-                emailField.classList.remove('hidden');
-                forgotPassword.classList.add('hidden');
-                submitButton.textContent = 'SIGN UP';
-            }
-        });
-
-        // Handle form submission
-        authForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            try {
-                const formData = new FormData(authForm);
-                const response = await fetch(authForm.action, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.text();
-                
-                if (response.ok) {
-                    if (!isSignIn) {
-                        // Show success popup for registration
-                        successMessage.textContent = "Registration successful! Please check your email to verify your account.";
-                        successPopup.classList.add('active');
-                        
-                        setTimeout(() => {
-                            successPopup.classList.remove('active');
-                            // Reset form
-                            authForm.reset();
-                            // Switch back to login
-                            toggleButton.click();
-                        }, 5000);
-                    } else {
-                        // Redirect for login
-                        window.location.href = response.url;
-                    }
-                } else {
-                    // Handle error
-                    console.error('Form submission failed:', result);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
 </body>
 
 </html>

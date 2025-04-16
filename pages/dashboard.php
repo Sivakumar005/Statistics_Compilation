@@ -10,7 +10,7 @@ require_once '../includes/auth.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Statistics Project</title>
+    <title>Dashboard - StatSync</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -82,18 +82,39 @@ require_once '../includes/auth.php';
             color: #2563eb;
         }
 
-        header .login-btn {
-            background-color: #2563eb;
-            color: white;
+        header .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        header .auth-buttons a {
             padding: 0.5rem 1.5rem;
             border-radius: 0.375rem;
             text-decoration: none;
             font-weight: 500;
-            transition: background-color 0.2s ease-in-out;
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+        }
+
+        header .login-btn {
+            background-color: #2563eb;
+            color: white;
         }
 
         header .login-btn:hover {
             background-color: #1d4ed8;
+        }
+
+        header .signup-btn {
+            background-color: transparent;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        header .signup-btn:hover {
+            background-color: #2563eb;
+            color: white;
         }
 
         /* Main content styles */
@@ -230,8 +251,9 @@ require_once '../includes/auth.php';
                 flex: 0;
             }
 
-            header .login-btn {
+            header .auth-buttons {
                 margin-left: auto;
+                gap: 0.5rem;
             }
 
             main {
@@ -262,8 +284,15 @@ require_once '../includes/auth.php';
                 gap: 0.5rem;
             }
 
-            header .login-btn {
+            header .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+            }
+
+            header .auth-buttons a {
                 padding: 0.5rem 1rem;
+                width: 100%;
             }
         }
     </style>
@@ -280,7 +309,10 @@ require_once '../includes/auth.php';
             <a href="about.php">About Us</a>
             <a href="contact.php">Contact Us</a>
         </div>
-        <a href="./auth/login.html" class="login-btn">Log In</a>
+        <div class="auth-buttons">
+            <a href="login.php" class="login-btn">Log In</a>
+            <a href="signup.php" class="signup-btn">Sign Up</a>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -314,7 +346,7 @@ require_once '../includes/auth.php';
                     <p>Add and manage notes to capture observations and share findings effortlessly.</p>
                 </div>
             </div>
-            <a href="./auth/login.html" class="cta-btn">
+            <a href="./auth/signup.html" class="cta-btn">
                 <i class='bx bx-rocket mr-2'></i> Get Started
             </a>
         </div>
@@ -327,7 +359,7 @@ require_once '../includes/auth.php';
             <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
         </div>
-        <p>© 2025 Statistics Project. All rights reserved.</p>
+        <p>© 2025 StatSync. All rights reserved.</p>
     </footer>
 </body>
 

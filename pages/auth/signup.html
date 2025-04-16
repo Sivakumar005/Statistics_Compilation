@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - StatSync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .input-container {
+            position: relative;
+        }
+
+        .input-container i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .input-container input {
+            padding-left: 40px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 500;
+            color: white;
+            margin-top: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .logo-tagline {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+
+        .popup-overlay.active .popup-box {
+            transform: scale(1);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background-color: #e2e8f0;
+            margin-top: 1rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #10B981;
+            width: 100%;
+            transition: width 5s linear;
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-white to-purple-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white rounded-2xl shadow-lg flex max-w-2xl w-full">
+        <!-- Left Section with Logo and Welcome Message -->
+        <div class="w-1/2 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-l-2xl p-8 flex flex-col justify-between items-center text-white">
+            <div class="logo-container">
+                <h1 class="logo-text">StatSync</h1>
+                <p class="logo-tagline font-semibold">Conveys seamless synchronization and automation of statistical data</p>
+            </div>
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-4">Welcome Back!</h2>
+                <p class="mb-6">Already have an account? Sign in to continue.</p>
+                <a href="http://localhost/statistics%20project/pages/auth/login.html" class="bg-white text-yellow-500 px-6 py-2 rounded-lg hover:bg-gray-100 transition">SIGN IN</a>
+            </div>
+        </div>
+
+        <!-- Right Section: Form -->
+        <div class="w-1/2 p-8">
+            <h2 class="text-2xl font-bold mb-8 text-center text-gray-800">Create Account</h2>
+            <!-- Social Login Icons -->
+            <div class="flex space-x-4 mb-6 justify-center">
+                <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <img src="/Statistics project/assets/images/google-color-svgrepo-com (1).svg" alt="Google" class="w-6 h-6">
+                </button>
+                <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <img src="/Statistics project/assets/images/facebook-color-svgrepo-com (1).svg" alt="Facebook" class="w-6 h-6">
+                </button>
+                <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <img src="/Statistics project/assets/images/linkedin-svgrepo-com.svg" alt="LinkedIn" class="w-6 h-6">
+                </button>
+            </div>
+            <!-- Form -->
+            <form id="signup-form" action="register.php" method="POST" class="space-y-6">
+                <!-- Email Field -->
+                <div class="input-container">
+                    <label for="email" class="block text-sm font-medium text-gray-700">EMAIL</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <p id="email-error" class="error-message hidden"></p>
+                </div>
+                <!-- Username Field -->
+                <div class="input-container">
+                    <label for="username" class="block text-sm font-medium text-gray-700">USERNAME</label>
+                    <div class="relative">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <p id="username-error" class="error-message hidden"></p>
+                </div>
+                <!-- Password Field -->
+                <div class="input-container">
+                    <label for="password" class="block text-sm font-medium text-gray-700">PASSWORD</label>
+                    <div class="relative">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <p id="password-error" class="error-message hidden"></p>
+                </div>
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit"
+                        class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+                        SIGN UP
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-box">
+            <svg class="mx-auto h-12 w-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <h3 class="mt-2 text-lg font-medium text-gray-900">Success!</h3>
+            <p class="mt-2 text-sm text-gray-500" id="successMessage">
+                Registration successful! Redirecting to login...
+            </p>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Popup -->
+    <div class="popup-overlay" id="errorPopup">
+        <div class="popup-box">
+            <svg class="mx-auto h-12 w-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            <h3 class="mt-2 text-lg font-medium text-gray-900">Error</h3>
+            <p class="mt-2 text-sm text-gray-500" id="errorMessage"></p>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('signup-form');
+        const successPopup = document.getElementById('successPopup');
+        const errorPopup = document.getElementById('errorPopup');
+        const emailInput = document.getElementById('email');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('email-error');
+        const usernameError = document.getElementById('username-error');
+        const passwordError = document.getElementById('password-error');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Reset error messages
+            emailError.classList.add('hidden');
+            usernameError.classList.add('hidden');
+            passwordError.classList.add('hidden');
+            errorPopup.classList.remove('active');
+
+            // Validate inputs
+            const email = emailInput.value.trim();
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            let isValid = true;
+
+            if (!email) {
+                emailError.textContent = 'Email is required';
+                emailError.classList.remove('hidden');
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailError.textContent = 'Please enter a valid email';
+                emailError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!username) {
+                usernameError.textContent = 'Username is required';
+                usernameError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!password) {
+                passwordError.textContent = 'Password is required';
+                passwordError.classList.remove('hidden');
+                isValid = false;
+            } else if (password.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+                passwordError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    successPopup.classList.add('active');
+                    setTimeout(() => {
+                        successPopup.classList.remove('active');
+                        form.reset();
+                        window.location.href = 'http://localhost/statistics%20project/pages/auth/login.html';
+                    }, 5000);
+                } else {
+                    throw new Error(result.error || 'Registration failed');
+                }
+            } catch (error) {
+                document.getElementById('errorMessage').textContent = error.message;
+                errorPopup.classList.add('active');
+                setTimeout(() => {
+                    errorPopup.classList.remove('active');
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+
+</html>
