@@ -21,14 +21,17 @@ require_once '../includes/auth.php';
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
+            min-height: 100vh; /* Ensure footer stays at bottom */
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Background gradient */
         body {
             background: linear-gradient(135deg, #e0f2fe 0%, #f9fafb 100%);
+            flex: 1;
         }
 
         /* Header styles */
@@ -104,9 +107,10 @@ require_once '../includes/auth.php';
         /* Main content styles */
         main {
             max-width: 64rem;
-            margin: 8rem auto 4rem;
+            margin: 8rem auto 4rem; /* Adjusted margin to account for fixed header */
             padding: 2rem;
             text-align: center;
+            flex: 1; /* Ensure main takes up remaining space */
         }
 
         .about-section {
@@ -120,7 +124,7 @@ require_once '../includes/auth.php';
             font-size: 2.25rem;
             font-weight: 700;
             color: #1f2937;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem; /* Increased for better spacing */
         }
 
         .about-section p {
@@ -133,50 +137,39 @@ require_once '../includes/auth.php';
         .team {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 2rem; /* Increased gap for better spacing */
+            margin-top: 3rem; /* Increased for better separation */
+            justify-items: center; /* Center items in the grid */
         }
 
         .team-member {
             background: #f8fafc;
             border-radius: 0.5rem;
-            padding: 1.5rem;
+            padding: 2rem; /* Increased padding for better spacing */
             text-align: center;
             transition: transform 0.2s ease-in-out;
+            width: 100%;
+            max-width: 18rem; /* Constrain width for consistency */
         }
 
         .team-member:hover {
             transform: translateY(-5px);
         }
 
-        /* Profile image and placeholder icon styles */
-        .team-member .profile-img,
-        .team-member .placeholder-icon {
+        /* Profile image styles */
+        .team-member .profile-img {
             width: 6rem;
             height: 6rem;
-            margin: 0 auto 0.75rem;
+            margin: 0 auto 1rem; /* Adjusted margin for better spacing */
             border-radius: 50%;
-            object-fit: cover; /* For images */
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover;
+            display: block;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 3px solid #2563eb;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .team-member .profile-img {
-            border: 3px solid #2563eb;
-        }
-
-        .team-member .placeholder-icon {
-            background-color: #e0f2fe; /* Light blue background for placeholder */
-            color: #2563eb;
-            font-size: 3rem;
-            border: 3px solid #2563eb;
-        }
-
-        .team-member .profile-img:hover,
-        .team-member .placeholder-icon:hover {
+        .team-member .profile-img:hover {
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
@@ -202,7 +195,7 @@ require_once '../includes/auth.php';
             border-radius: 0.5rem;
             font-weight: 500;
             text-decoration: none;
-            margin-top: 2rem;
+            margin-top: 3rem; /* Increased for better separation */
             transition: background-color 0.2s ease-in-out;
         }
 
@@ -216,6 +209,7 @@ require_once '../includes/auth.php';
             color: white;
             padding: 2rem;
             text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         footer .social-icons {
@@ -284,16 +278,16 @@ require_once '../includes/auth.php';
 
             .team {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            .team-member .profile-img,
-            .team-member .placeholder-icon {
+            .team-member {
+                max-width: 16rem; /* Slightly smaller for mobile */
+            }
+
+            .team-member .profile-img {
                 width: 5rem;
                 height: 5rem;
-            }
-
-            .team-member .placeholder-icon {
-                font-size: 2.5rem;
             }
         }
 
@@ -307,14 +301,9 @@ require_once '../includes/auth.php';
                 padding: 0.5rem 1rem;
             }
 
-            .team-member .profile-img,
-            .team-member .placeholder-icon {
+            .team-member .profile-img {
                 width: 4rem;
                 height: 4rem;
-            }
-
-            .team-member .placeholder-icon {
-                font-size: 2rem;
             }
         }
     </style>
@@ -356,12 +345,12 @@ require_once '../includes/auth.php';
                     <h3>Nagireddy Sivakumar</h3>
                 </div>
                 <div class="team-member">
-                <img src="../assets/images/sanjuprofile.jpg" alt="Sanju Sri" class="profile-img">
-                <h3>Sanju Sri</h3>
+                    <img src="../assets/images/sanjuprofile.jpg" alt="Sanju Sri" class="profile-img">
+                    <h3>Sanju Sri</h3>
                 </div>
                 <div class="team-member">
-                <img src="../assets/images/mouryaprofile.jpg" alt="Sai Mourya" class="profile-img">
-                <h3>Sai Mourya</h3>
+                    <img src="../assets/images/mouryaprofile.jpg" alt="Sai Mourya" class="profile-img">
+                    <h3>Sai Mourya</h3>
                 </div>
             </div>
             <a href="./auth/login.html" class="cta-btn">

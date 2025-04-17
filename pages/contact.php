@@ -320,7 +320,7 @@ require_once '../includes/auth.php';
             <a href="about.php">About Us</a>
             <a href="contact.php" class="active">Contact Us</a>
         </div>
-        <a href="login.php" class="login-btn">Log In</a>
+        <a href="./auth/login.html" class="login-btn">Log In</a>
     </header>
 
     <!-- Main Content -->
