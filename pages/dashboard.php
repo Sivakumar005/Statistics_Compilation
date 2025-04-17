@@ -310,8 +310,8 @@ require_once '../includes/auth.php';
             <a href="contact.php">Contact Us</a>
         </div>
         <div class="auth-buttons">
-            <a href="login.php" class="login-btn">Log In</a>
-            <a href="signup.php" class="signup-btn">Sign Up</a>
+            <a href="./auth/login.html" class="login-btn">Log In</a>
+            <a href="./auth/signup.html" class="signup-btn">Sign Up</a>
         </div>
     </header>
 

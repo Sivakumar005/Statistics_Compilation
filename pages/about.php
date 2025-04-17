@@ -149,10 +149,36 @@ require_once '../includes/auth.php';
             transform: translateY(-5px);
         }
 
-        .team-member i {
+        /* Profile image and placeholder icon styles */
+        .team-member .profile-img,
+        .team-member .placeholder-icon {
+            width: 6rem;
+            height: 6rem;
+            margin: 0 auto 0.75rem;
+            border-radius: 50%;
+            object-fit: cover; /* For images */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .team-member .profile-img {
+            border: 3px solid #2563eb;
+        }
+
+        .team-member .placeholder-icon {
+            background-color: #e0f2fe; /* Light blue background for placeholder */
             color: #2563eb;
             font-size: 3rem;
-            margin-bottom: 0.75rem;
+            border: 3px solid #2563eb;
+        }
+
+        .team-member .profile-img:hover,
+        .team-member .placeholder-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .team-member h3 {
@@ -259,6 +285,16 @@ require_once '../includes/auth.php';
             .team {
                 grid-template-columns: 1fr;
             }
+
+            .team-member .profile-img,
+            .team-member .placeholder-icon {
+                width: 5rem;
+                height: 5rem;
+            }
+
+            .team-member .placeholder-icon {
+                font-size: 2.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -269,6 +305,16 @@ require_once '../includes/auth.php';
 
             header .login-btn {
                 padding: 0.5rem 1rem;
+            }
+
+            .team-member .profile-img,
+            .team-member .placeholder-icon {
+                width: 4rem;
+                height: 4rem;
+            }
+
+            .team-member .placeholder-icon {
+                font-size: 2rem;
             }
         }
     </style>
@@ -306,16 +352,16 @@ require_once '../includes/auth.php';
             </p>
             <div class="team">
                 <div class="team-member">
-                    <i class='bx bx-user'></i>
+                    <img src="../assets/images/sivaprofile.jpg" alt="Nagireddy Sivakumar" class="profile-img">
                     <h3>Nagireddy Sivakumar</h3>
                 </div>
                 <div class="team-member">
-                    <i class='bx bx-user'></i>
-                    <h3>Sanju sri</h3>
+                <img src="../assets/images/sanjuprofile.jpg" alt="Sanju Sri" class="profile-img">
+                <h3>Sanju Sri</h3>
                 </div>
                 <div class="team-member">
-                    <i class='bx bx-user'></i>
-                    <h3>Sai Mourya</h3>
+                <img src="../assets/images/mouryaprofile.jpg" alt="Sai Mourya" class="profile-img">
+                <h3>Sai Mourya</h3>
                 </div>
             </div>
             <a href="./auth/login.html" class="cta-btn">
@@ -331,7 +377,7 @@ require_once '../includes/auth.php';
             <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
         </div>
-        <p>© 2025 Statistics Project. All rights reserved.</p>
+        <p>© 2025 StatSync. All rights reserved.</p>
     </footer>
 </body>
 
